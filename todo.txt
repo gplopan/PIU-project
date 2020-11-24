@@ -1,0 +1,30 @@
+
+Marti:
+
+1) sprite-uri => incercarea sa randam un sprite sa vedem cum fuge
+2) impartirea hartii intr-o matrice bidimensionala 
+3) background bottom space for informations
+4) menu screen (pe final)
+5) click event to get the X,Y positions
+6) de terminat de scris clasele player/ game
+
+Miercuri: main target: level1
+1) tower shotting (and where), if bullet hits enemy (coliziuni) , health--
+2) coliziuni
+3) bottom screen menu what to show and show active on click, event-ul de adaugare pe harta daca este turn selectat din bottom screen menu
+4) time between waves, towers reloading time
+5) will come...
+
+Plopicutz:
+	Marti:
+		4, 1, 6
+	Miercuri:
+		
+Ionutz:
+	Marti:
+		2, 3, 5  
+		3 -> done cred (am adaugat imaginea in widget si am lasat spatiu jos =)) )
+		5 -> am facut un mouseevent ce va da overload la metoda originala mouseevent si vom avea coordonatele (merge lolz)
+		2 -> done
+	Miercuri:
+		
