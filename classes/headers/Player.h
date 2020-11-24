@@ -13,18 +13,15 @@ private:
     string name;   // name of the player
     int score;     // points gathered
     int resources; // amount of gold left
-    int currentLevel; // current level of the game
 public:
+    Player()= default;
     Player(string n);
-    ~Player();
+    ~Player()= default;
     string getName();
     int getResources();
-    void setResources(int r);
-    int getLevel();
-    void setLevel(int l);
+    void updateResources(int r);
     int getScore();
-    void setScore(int s);
-
+    void updateScore(int s);
 };
 
 
