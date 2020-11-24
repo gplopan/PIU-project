@@ -17,7 +17,7 @@ int main(int argc, char **argv) {
     layout->addWidget(button3);
     window->setLayout(layout);
     window->show();
-    
+
     return app.exec();
 
     //insert event related instructions after this
