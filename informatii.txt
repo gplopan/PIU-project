@@ -1,0 +1,12 @@
+pentru board:
+
+0 = liber
+1 = drum
+2 = colt drum (stanga/ dreapta face drumul :)) )
+3 = start drum
+4 = finish drum
+
+
+ATENTIE!
+
+a) tabla mea este 22x34 nu 34x22. Adica? adica i merge pana la 22 (in jos) si j pana la 34 (in dreapta)

@@ -13,12 +13,13 @@ Tower::Tower(int x, int y) {
     this->y=y;
 }
 
-Tower::Tower(int p, int rt, int c, int x, int y) {
+Tower::Tower(int p, int rt, int c, int x, int y, int range) {
     power=p;
     reloadTime=rt;
     cost=c;
     this->x=x;
     this->y=y;
+    this->range = range;
 }
 
 //todo
@@ -35,6 +36,11 @@ int Tower::getPower() {
 ///get reload time
 int Tower::getTime() {
     return reloadTime;
+}
+
+int Tower::getRange()
+{
+    return range;
 }
 
 ///get x coordinate

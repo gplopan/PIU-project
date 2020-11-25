@@ -13,9 +13,10 @@ private:
 public:
     Board(int level);
     ~Board() = default;
-
+    Board();
     int** getBoard();
     int getLevel();
+    void setBoard(int mapLevel);
     };
 
 
