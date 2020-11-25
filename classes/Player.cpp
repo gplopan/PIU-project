@@ -37,6 +37,12 @@ void Player::updateScore(int s) {
     score+=s;
 }
 
+Player::Player() {
+    name="Player";
+    score=0;
+    resources=10;
+}
+
 
 
 

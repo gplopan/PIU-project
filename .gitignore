@@ -1,3 +1,4 @@
 #ignore the build directory
 classes/cmake-build-debug/*
 classes/.idea
+classes/other_branch

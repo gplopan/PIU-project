@@ -13,12 +13,15 @@ Tower::Tower(int x, int y) {
     this->y=y;
 }
 
-Tower::Tower(int p, int rt, int c, int x, int y) {
+///will be replaced with initializing from a file maybe
+Tower::Tower(int p, int rt, int c, int x, int y, int range, string sprite) {
     power=p;
     reloadTime=rt;
     cost=c;
     this->x=x;
     this->y=y;
+    this->range=range;
+    spriteName=sprite;
 }
 
 //todo

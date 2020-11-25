@@ -14,7 +14,7 @@ private:
     int score;     // points gathered
     int resources; // amount of gold left
 public:
-    Player()= default;
+    Player();
     Player(string n);
     ~Player()= default;
     string getName();

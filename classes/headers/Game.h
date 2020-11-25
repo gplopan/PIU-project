@@ -16,13 +16,14 @@ Q_OBJECT
 private:
     Player *player;
     Level level;
-
+    QLineEdit * nameEdit;
     //other bs
 public:
     Game(QWidget *parent = nullptr);
     ~Game();
-    //start? maybe a callback function on the start button
 
+public slots:
+    void start();
 };
 
 
