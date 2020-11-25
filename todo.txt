@@ -9,22 +9,30 @@ Marti:
 6) de terminat de scris clasele player/ game
 
 Miercuri: main target: level1
-1) tower shotting (and where), if bullet hits enemy (coliziuni) , health--
-2) coliziuni
-3) bottom screen menu what to show and show active on click, event-ul de adaugare pe harta daca este turn selectat din bottom screen menu
-4) time between waves, towers reloading time
-5) will come...
+
+1) sa vedem ce facem cu sprite-urile
+2) bottom screen menu-ul cu turnuri si adaugat turn pe harta
+3) imagine turnuri si inamici (modificat clasele)
+4) sa mearga inamicii dintr-un punct in altul
+5) incarcare tile-uri harta (statica momentan)
+6) incadrarea hartii ca sa cada tile-urile pe drum cum trebuie
 
 Plopicutz:
 	Marti:
-		4, 1, 6
+		TODO: 4, 1, 6
+		1 -> almost done
+		4 -> almost done
+		6 -> done
 	Miercuri:
-		
+		TODO: 1, 3, 4
+			
 Ionutz:
 	Marti:
-		2, 3, 5  
+		TODO: 2, 3, 5  
 		3 -> done cred (am adaugat imaginea in widget si am lasat spatiu jos =)) )
 		5 -> am facut un mouseevent ce va da overload la metoda originala mouseevent si vom avea coordonatele (merge lolz)
 		2 -> done
 	Miercuri:
+		TODO: 1, 2, 5, 6
+
 		
