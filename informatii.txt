@@ -10,3 +10,4 @@ pentru board:
 ATENTIE!
 
 a) tabla mea este 22x34 nu 34x22. Adica? adica i merge pana la 22 (in jos) si j pana la 34 (in dreapta)
+	a.1) un tile trebuie sa fie 70x70 => 1300x800 = 1260=(18) x 770=(11) => 18x11 aka 11x18

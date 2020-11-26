@@ -23,11 +23,9 @@ public:
 	Board board;
 	StartGame();
 	
-public slots:
-	void sendClickData(int x, int y);
-signals:
-	inline void sendCoordonates(const QString& text);
 	
+signals:
+	inline void sendClickData(int x, int y);
 };
 
 #endif 

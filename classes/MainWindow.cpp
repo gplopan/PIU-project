@@ -32,11 +32,16 @@ void MainWindow::SetData()
 	
 }
 
-void MainWindow::AddTowerToMap(const QString& text)
+void MainWindow::AddTowerToMap(int x, int y)
 {
-	qDebug() << "mesaj = " << text;
+	qDebug() << "mesaj = " << x << " , " << y;
+
+	//calculam pozitia sa punem turnul fix pe tile
+	int pozX = x / 70;
+	int pozY = y / 70;
+	
 	QWidget* image = new QWidget;
-	image->setGeometry(500, 500, 40, 40);
-	image->setStyleSheet("background-image: url('./images/towertest2.png');");
+	image->setGeometry(pozX * 70, pozY*70, 70, 70);
+	image->setStyleSheet("background-image: url('./images/tower1p4.png');");
 	mainwindow->layout()->addWidget(image);
 }

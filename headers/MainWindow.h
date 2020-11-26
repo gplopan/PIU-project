@@ -14,7 +14,8 @@ public:
     QMainWindow* mainwindow;
     void SetData();
 
-    void AddTowerToMap(const QString& text);
+public slots:
+    void AddTowerToMap(int x, int y);
     
 };
 

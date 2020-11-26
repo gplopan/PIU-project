@@ -17,14 +17,5 @@ StartGame::StartGame() : QObject()
 
 void StartGame::sendClickData(int x, int y)
 {
-	this->vectorX = x / 40;
-	this->vectorY = y / 40;
-
-	emit sendCoordonates("mesaj");
-	
-	qDebug() << "click x = " << x << " si click y = " << y;
-	qDebug() << "vector x = " << this->vectorX << " si vector y = " << this->vectorY;
 }
 
-void StartGame::sendCoordonates(const QString& text)
-{}

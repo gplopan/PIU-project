@@ -13,9 +13,9 @@ int main(int argc, char** argv)
     //
    
 	
-	// connections 
-    QObject::connect(&start_game, &StartGame::sendCoordonates, &mainwindow, &MainWindow::AddTowerToMap);
-	
+	// connections
+    bool success = QObject::connect(&start_game, &StartGame::sendClickData, &mainwindow, &MainWindow::AddTowerToMap);
+    
   
     // qDebug() << "Debug"; => folosim qDebug() pentru debug "profesionist"
     mainwindow.mainwindow->show();
@@ -24,6 +24,7 @@ int main(int argc, char** argv)
 
 void QWidget::mousePressEvent(QMouseEvent* event)
 {
+    emit start_game.sendClickData(event->x(), event->y());
     start_game.sendClickData(event->x(), event->y());
 }
 
