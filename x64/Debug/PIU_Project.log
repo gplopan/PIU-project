@@ -1,2 +1,5 @@
-﻿  MainWindow.cpp
+﻿  MainClass.cpp
+  StartGame.cpp
+C:\Users\Ionut\Desktop\FACULTATE\FACULTATE\Anul4\Sem1\PIU\PIU_Git\PIU-project\MainClass.cpp(26,1): warning C4273: 'QWidget::mousePressEvent': inconsistent dll linkage
+C:\Qt1\5.15.1\msvc2019_64\include\QtWidgets\qwidget.h(620,18): message : see previous definition of 'mousePressEvent' (compiling source file MainClass.cpp)
   PIU_Project.vcxproj -> C:\Users\Ionut\Desktop\FACULTATE\FACULTATE\Anul4\Sem1\PIU\PIU_Git\PIU-project\x64\Debug\PIU_Project.exe

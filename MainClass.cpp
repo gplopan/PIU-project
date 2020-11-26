@@ -24,7 +24,7 @@ int main(int argc, char** argv)
 
 void QWidget::mousePressEvent(QMouseEvent* event)
 {
-    emit start_game.sendClickData(event->x(), event->y());
-    start_game.sendClickData(event->x(), event->y());
+	if(start_game.CanBuild(event->x(), event->y()))
+		emit start_game.sendClickData(event->x(), event->y());
 }
 

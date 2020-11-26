@@ -12,21 +12,25 @@ MainWindow::MainWindow() : QMainWindow(), mainwindow(new QMainWindow)
 
 void MainWindow::SetData()
 {
+	// central widget -> am citit pe net ca nu e bine sa adaugam direct in layout-ul mainwindow-ului, ci mai bine intr-un widget gen centralwid
+	//QWidget* centralWidget = new QWidget;
+	//mainwindow->setCentralWidget(centralWidget);
 
+	
 	// setting the image
 	QWidget* image = new QWidget;
 	image->setGeometry(0, 0, 1350, 800);
-	image->setStyleSheet("background-image: url('./images/level2.jpg');");
+	image->setStyleSheet("background-image: url('./images/level2.png');");
 	mainwindow->layout()->addWidget(image);
 
 	// setting the bottom menu (va trebui sa-l mutam in alt fisier mai incolo)
 	QWidget* bottomMenu = new QWidget;
-	bottomMenu->setGeometry(0, 800, 1350, 80);
+	bottomMenu->setGeometry(0, 780, 1260, 80);
 	bottomMenu->setStyleSheet("background-image: url('./images/bottommenu.png');");
 	mainwindow->layout()->addWidget(bottomMenu);
 	
 	// va trebui ca menu-ul de jos sa-l setam ca setstatus in mainwindow (vezi documentatia oficiala)
-	mainwindow->setFixedSize(1300, 880);
+	mainwindow->setFixedSize(1260, 860);
 
 
 	
@@ -34,7 +38,7 @@ void MainWindow::SetData()
 
 void MainWindow::AddTowerToMap(int x, int y)
 {
-	qDebug() << "mesaj = " << x << " , " << y;
+	qDebug() << "mesaj = " << x/70 << " , " << y/70;
 
 	//calculam pozitia sa punem turnul fix pe tile
 	int pozX = x / 70;

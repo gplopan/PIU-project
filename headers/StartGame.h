@@ -22,7 +22,7 @@ class StartGame : public QObject
 public:
 	Board board;
 	StartGame();
-	
+	bool CanBuild(int x, int y);
 	
 signals:
 	inline void sendClickData(int x, int y);

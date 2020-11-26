@@ -16,6 +16,17 @@ StartGame::StartGame() : QObject()
 
 
 void StartGame::sendClickData(int x, int y)
+{}
+
+bool StartGame::CanBuild(int x, int y)
 {
+	int** _board = board.getBoard();
+	int pozX = x / 70;
+	int pozY = y / 70;
+	
+	if (_board[pozY][pozX] == 0)
+		return true;
+	return false;
 }
+
 

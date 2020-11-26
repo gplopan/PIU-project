@@ -5,7 +5,7 @@ pentru board:
 2 = colt drum (stanga/ dreapta face drumul :)) )
 3 = start drum
 4 = finish drum
-
+9 = nu se poate construi turn
 
 ATENTIE!
 

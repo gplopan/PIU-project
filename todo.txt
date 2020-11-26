@@ -55,5 +55,8 @@ Ionutz:
 		1 -> done i guess
 	Joi:
 		TODO: 1, 3, 5
+		5 -> done (am modificat map1.txt si acum poti pune turn doar unde nu e drum/ nu e piatra/ nu e boschet
+		1 -> nush ce drq aveam aici, cred ca da
+		3 -> not yet
 
 		
