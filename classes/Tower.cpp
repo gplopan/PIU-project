@@ -1,5 +1,5 @@
 //
-// Created by georgiana on 24.11.2020.
+// Created by georgiana on 24.11.2020. Copyright.
 //
 
 #include "headers/Tower.h"
@@ -13,15 +13,13 @@ Tower::Tower(int x, int y) {
     this->y=y;
 }
 
-///will be replaced with initializing from a file maybe
-Tower::Tower(int p, int rt, int c, int x, int y, int range, string sprite) {
+Tower::Tower(int p, int rt, int c, int x, int y, int range) {
     power=p;
     reloadTime=rt;
     cost=c;
     this->x=x;
     this->y=y;
-    this->range=range;
-    spriteName=sprite;
+    this->range = range;
 }
 
 //todo
@@ -38,6 +36,11 @@ int Tower::getPower() {
 ///get reload time
 int Tower::getTime() {
     return reloadTime;
+}
+
+int Tower::getRange()
+{
+    return range;
 }
 
 ///get x coordinate

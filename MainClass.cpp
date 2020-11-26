@@ -1,4 +1,4 @@
-#include "MainWindow.h"
+#include "headers/MainWindow.h"
 #include "headers/Includes.h"
 #include "headers/StartGame.h"
 

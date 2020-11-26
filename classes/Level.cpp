@@ -19,7 +19,7 @@ int Level::getWaveNumber() {
     return nWaves;
 }
 
-///get number of enemies to be rendered from the enemy array
+///get number of enemies to be rendered from the Board array
 int Level::getNextEnemies(int w) {
     if(w<nWaves)
         return waves[w];
@@ -56,7 +56,7 @@ Level::~Level() {
 }
 
 //todo
-///update the current wave and the state of the enemy array and the finished flag
+///update the current wave and the state of the Board array and the finished flag
 void Level::update() {
     throw "not implemented yet. nu stiu exact ce sa faca";
 }

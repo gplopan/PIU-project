@@ -87,15 +87,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Board.cpp" />
-    <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="Functions.cpp" />
-    <ClCompile Include="Level.cpp" />
+    <ClCompile Include="classes\Board.cpp" />
+    <ClCompile Include="classes\Enemy.cpp" />
+    <ClCompile Include="classes\Functions.cpp" />
+    <ClCompile Include="classes\Level.cpp" />
+    <ClCompile Include="classes\MainWindow.cpp" />
+    <ClCompile Include="classes\Player.cpp" />
+    <ClCompile Include="classes\StartGame.cpp" />
+    <ClCompile Include="classes\Tower.cpp" />
     <ClCompile Include="MainClass.cpp" />
-    <ClCompile Include="MainWindow.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="StartGame.cpp" />
-    <ClCompile Include="Tower.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="informatii.txt" />
@@ -107,10 +107,10 @@
     <ClInclude Include="headers\Functions.h" />
     <ClInclude Include="headers\Includes.h" />
     <ClInclude Include="headers\Level.h" />
+    <QtMoc Include="headers\MainWindow.h" />
     <ClInclude Include="headers\Player.h" />
     <QtMoc Include="headers\StartGame.h" />
     <ClInclude Include="headers\Tower.h" />
-    <QtMoc Include="MainWindow.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

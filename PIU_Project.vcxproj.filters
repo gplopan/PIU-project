@@ -22,37 +22,37 @@
       <Extensions>qrc;*</Extensions>
       <ParseFiles>false</ParseFiles>
     </Filter>
-    <Filter Include="Source Files\Elements">
-      <UniqueIdentifier>{4baeb805-5f58-4ee3-9260-7d4d80c27a69}</UniqueIdentifier>
+    <Filter Include="Classes">
+      <UniqueIdentifier>{d9c3e7f1-69fa-4747-8607-52335b6672de}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainClass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Board.cpp">
-      <Filter>Source Files\Elements</Filter>
+    <ClCompile Include="classes\Board.cpp">
+      <Filter>Classes</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>Source Files\Elements</Filter>
+    <ClCompile Include="classes\Enemy.cpp">
+      <Filter>Classes</Filter>
     </ClCompile>
-    <ClCompile Include="Functions.cpp">
-      <Filter>Source Files\Elements</Filter>
+    <ClCompile Include="classes\Functions.cpp">
+      <Filter>Classes</Filter>
     </ClCompile>
-    <ClCompile Include="Level.cpp">
-      <Filter>Source Files\Elements</Filter>
+    <ClCompile Include="classes\Level.cpp">
+      <Filter>Classes</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Source Files\Elements</Filter>
+    <ClCompile Include="classes\MainWindow.cpp">
+      <Filter>Classes</Filter>
     </ClCompile>
-    <ClCompile Include="StartGame.cpp">
-      <Filter>Source Files\Elements</Filter>
+    <ClCompile Include="classes\Player.cpp">
+      <Filter>Classes</Filter>
     </ClCompile>
-    <ClCompile Include="Tower.cpp">
-      <Filter>Source Files\Elements</Filter>
+    <ClCompile Include="classes\StartGame.cpp">
+      <Filter>Classes</Filter>
     </ClCompile>
-    <ClCompile Include="MainWindow.cpp">
-      <Filter>Source Files\Elements</Filter>
+    <ClCompile Include="classes\Tower.cpp">
+      <Filter>Classes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -83,10 +83,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="MainWindow.h">
+    <QtMoc Include="headers\StartGame.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="headers\StartGame.h">
+    <QtMoc Include="headers\MainWindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
