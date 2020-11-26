@@ -1,5 +1,5 @@
-#include "headers/MainWindow.h"
-#include "headers/Includes.h"
+#include "../headers/MainWindow.h"
+#include "../headers/Includes.h"
 
 MainWindow::~MainWindow() {
     delete mainwindow;

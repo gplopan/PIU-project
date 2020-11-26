@@ -1,12 +1,2 @@
-﻿  moc headers\MainWindow.h
-  moc headers\StartGame.h
-  MainWindow.cpp
-  StartGame.cpp
-  MainClass.cpp
-C:\Users\Ionut\Desktop\FACULTATE\FACULTATE\Anul4\Sem1\PIU\PIU_Git\PIU-project\MainClass.cpp(26,1): warning C4273: 'QWidget::mousePressEvent': inconsistent dll linkage
-C:\Qt1\5.15.1\msvc2019_64\include\QtWidgets\qwidget.h(620,18): message : see previous definition of 'mousePressEvent' (compiling source file MainClass.cpp)
-  moc_MainWindow.cpp
-  moc_StartGame.cpp
-  LINK : C:\Users\Ionut\Desktop\FACULTATE\FACULTATE\Anul4\Sem1\PIU\PIU_Git\PIU-project\x64\Debug\PIU_Project.exe not found or not built by the last incremental link; performing full link
-     Creating library C:\Users\Ionut\Desktop\FACULTATE\FACULTATE\Anul4\Sem1\PIU\PIU_Git\PIU-project\x64\Debug\PIU_Project.lib and object C:\Users\Ionut\Desktop\FACULTATE\FACULTATE\Anul4\Sem1\PIU\PIU_Git\PIU-project\x64\Debug\PIU_Project.exp
+﻿  StartGame.cpp
   PIU_Project.vcxproj -> C:\Users\Ionut\Desktop\FACULTATE\FACULTATE\Anul4\Sem1\PIU\PIU_Git\PIU-project\x64\Debug\PIU_Project.exe
