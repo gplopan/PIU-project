@@ -17,6 +17,16 @@ Miercuri: main target: level1
 5) incarcare tile-uri harta (statica momentan)
 6) incadrarea hartii ca sa cada tile-urile pe drum cum trebuie
 
+
+Joi: 
+1) terminam de miercuri =)) (cel putin eu)
+2) qtoolbar - qtoolbutton etc
+3) towers turning around enemies
+4) enemy moving on the road
+5) pus turn pe harta la click undeva (2 de miercuri)
+6) clasa pentru bullet 
+
+
 Plopicutz:
 	Marti:
 		TODO: 4, 1, 6
@@ -25,6 +35,11 @@ Plopicutz:
 		6 -> done
 	Miercuri:
 		TODO: 1, 3, 4
+		1 -> done i guess
+		3 -> done
+		4 -> done-ish
+	Joi:
+		TODO: 2, 4, 6
 			
 Ionutz:
 	Marti:
@@ -37,5 +52,8 @@ Ionutz:
 		5 -> done (incarcare din txt)
 		6 -> done (am mai taiat putin din poza =)) )
 		2 -> half-done
+		1 -> done i guess
+	Joi:
+		TODO: 1, 3, 5
 
 		

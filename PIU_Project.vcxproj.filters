@@ -51,6 +51,9 @@
     <ClCompile Include="Tower.cpp">
       <Filter>Source Files\Elements</Filter>
     </ClCompile>
+    <ClCompile Include="MainWindow.cpp">
+      <Filter>Source Files\Elements</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="todo.txt" />
@@ -75,11 +78,16 @@
     <ClInclude Include="headers\Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="headers\StartGame.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="headers\Tower.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="MainWindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="headers\StartGame.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
 </Project>

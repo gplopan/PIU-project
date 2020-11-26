@@ -92,6 +92,7 @@
     <ClCompile Include="Functions.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="MainClass.cpp" />
+    <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="StartGame.cpp" />
     <ClCompile Include="Tower.cpp" />
@@ -107,8 +108,9 @@
     <ClInclude Include="headers\Includes.h" />
     <ClInclude Include="headers\Level.h" />
     <ClInclude Include="headers\Player.h" />
-    <ClInclude Include="headers\StartGame.h" />
+    <QtMoc Include="headers\StartGame.h" />
     <ClInclude Include="headers\Tower.h" />
+    <QtMoc Include="MainWindow.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

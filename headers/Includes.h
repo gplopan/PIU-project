@@ -8,7 +8,6 @@
 #include <QMouseEvent>
 #include <QPalette>
 #include <QDebug>
-
-
+#include <QWidget>
 #include <fstream>
 #include <string>
