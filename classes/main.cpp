@@ -54,12 +54,6 @@ int main(int argc, char **argv) {
     QObject::connect(button1, SIGNAL(clicked()), enemy, SLOT(reposition()));
     window->show();
 
-//    QWidget* image = new QWidget;
-//    image->setGeometry(0, 0, 1350, 800);
-//    image->setStyleSheet("background-image: url('/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/images/level2.jpg');");
-//    mainwindow.layout()->addWidget(image);
-//    mainwindow.show();
-
 //window->show();
 //    QPropertyAnimation animation(sprite, "geometry");
 //    animation.setDuration(10000);

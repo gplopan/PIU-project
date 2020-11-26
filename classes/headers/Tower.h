@@ -21,7 +21,6 @@ public:
     Tower(int x, int y);
     Tower(int p, int rt, int c, int x, int y, int range,string sprite);
     ~Tower() {}
-    //void takeDamage(int damage);
     void shoot();
     int getPower();
     int getTime();

@@ -17,8 +17,8 @@ private:
     int speed;
     //bool alive=true;
     int x,y;
+    //todo make private name
 public:
-
     std::string sprintName;
     Enemy();
     Enemy(int h, int s, std::string sprint, QWidget * parent= nullptr);
