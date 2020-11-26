@@ -103,7 +103,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="headers\Board.h" />
-    <ClInclude Include="headers\Enemy.h" />
+    <QtMoc Include="headers\Enemy.h" />
     <ClInclude Include="headers\Functions.h" />
     <ClInclude Include="headers\Includes.h" />
     <ClInclude Include="headers\Level.h" />

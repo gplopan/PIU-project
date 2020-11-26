@@ -63,9 +63,6 @@
     <ClInclude Include="headers\Board.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="headers\Enemy.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="headers\Functions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -87,6 +84,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="headers\MainWindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="headers\Enemy.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
