@@ -3,3 +3,4 @@ classes/cmake-build-debug/*
 classes/.idea
 .vs
 classes
+classes/other_branch
