@@ -2,7 +2,7 @@
 // Created by georgiana on 24.11.2020.
 //
 
-#include "headers/Level.h"
+#include "../headers/Level.h"
 
 ///returns number of waves
 int Level::getWave() {

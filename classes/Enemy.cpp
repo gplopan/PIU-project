@@ -2,7 +2,7 @@
 // Created by georgiana on 23.11.2020.
 //
 
-#include "headers/Enemy.h"
+#include "../headers/Enemy.h"
 
 //todo niste enum-uri sau ceva pentru diferite clase de inamici ca sa fie mai usor de creat?
 

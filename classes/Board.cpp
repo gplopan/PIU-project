@@ -1,8 +1,8 @@
 //
 // Created by ionut on 24.11.2020.
 //
-#include "headers/Includes.h";
-#include "headers/Board.h"
+#include "../headers/Includes.h";
+#include "../headers/Board.h"
 
 #include <iostream>
 

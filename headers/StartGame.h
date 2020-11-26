@@ -2,8 +2,8 @@
 // Created by ionut on 24.11.2020.
 // Code written by ionut & georgiana
 //
-#include "headers/Board.h"
-#include "headers/Includes.h"
+#include "../headers/Board.h"
+#include "../headers/Includes.h"
 
 #ifndef CLASSES_STARTGAME_H
 #define CLASSES_STARTGAME_H

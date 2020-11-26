@@ -2,7 +2,7 @@
 // Created by georgiana on 24.11.2020. Copyright.
 //
 
-#include "headers/Tower.h"
+#include "../headers/Tower.h"
 
 ///level 1 - generic values for a generic tower
 Tower::Tower(int x, int y) {
