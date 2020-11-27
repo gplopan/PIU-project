@@ -13,7 +13,7 @@ Game::Game(QWidget *parent) {
     nameEdit = new QLineEdit("Player", parent = this);
     nameEdit->setAlignment(Qt::AlignLeft);
     nameEdit->setMaxLength(20);
-    QPushButton *qPushButton = new QPushButton(
+    qPushButton = new QPushButton(
             QIcon("/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/images/cash.png"), "START",
             parent = this);
     qPushButton->setFixedSize(100, 50);
@@ -39,8 +39,8 @@ void Game::start() {
         QLabel *label = new QLabel(QString::fromStdString(player->getName()), this);
         label->show();
         delete nameEdit;
+        delete qPushButton;
     }
-    //delete the start button somehow
 }
 
 

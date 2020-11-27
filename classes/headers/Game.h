@@ -7,6 +7,7 @@
 
 #include <QtWidgets/QWidget>
 #include <QtWidgets/QLineEdit>
+#include <QtWidgets/QPushButton>
 #include "Player.h"
 #include "Level.h"
 
@@ -17,6 +18,8 @@ private:
     Player *player;
     Level level;
     QLineEdit * nameEdit;
+    QPushButton *qPushButton;
+
     //other bs
 public:
     Game(QWidget *parent = nullptr);
