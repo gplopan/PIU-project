@@ -4,7 +4,7 @@
 
 #include "headers/Level.h"
 
-///returns number of waves
+///returns currentWave
 int Level::getWave() {
     return currentWave;
 }
@@ -35,7 +35,7 @@ Level::Level() {
     reward=10;
     waves=new int[nWaves];
     for(int i=0;i<nWaves;i++)
-        waves[i]=(i+1)*level;
+        waves[i]=(i+1)*level+1;
     finished=false;
 //    board=new Board();
 //    board->setBoard(level);
@@ -63,8 +63,12 @@ Level::~Level() {
 //todo
 ///update the current wave and the state of the enemy array and the finished flag
 void Level::update() {
-    throw "not implemented yet. nu stiu exact ce sa faca";
+//    throw "not implemented yet. nu stiu exact ce sa faca";
     /// call .move() for the enemies at every timeout
+    for(int i=0;i<waves[currentWave];i++)
+    {
+
+    }
 }
 
 

@@ -64,15 +64,17 @@ void Enemy::walk(int nx, int ny) {
     y+=ny;
 }
 
-/// set the (x, y). not recommended
+/// set the (x, y). not recommended except for the init stage of the level
 void Enemy::setCoordinates(int x, int y) {
     this->x=x;
     this->y=y;
+    this->setGeometry(QRect(y * 70, x*70-20, 70, 70));
 }
 
 ///slot function. moves the enemy graphically
 void Enemy::reposition() {
-    walk(10,0);
+//    walk(10,0);
+    setCoordinates(x,y+1);
 }
 
 ///returns the name of the sprite. does not include the path to the root directory

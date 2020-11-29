@@ -7,6 +7,8 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
+#include <headers/Enemy.h>
+#include <QTimer>
 
 ///constructor
 Game::Game(QWidget *parent) {
@@ -14,7 +16,7 @@ Game::Game(QWidget *parent) {
     nameEdit = new QLineEdit("Player", parent = this);
     nameEdit->setAlignment(Qt::AlignLeft);
     nameEdit->setMaxLength(20);
-    qPushButton = new QPushButton("START",parent = this);
+    qPushButton = new QPushButton("START", parent = this);
     qPushButton->setFixedSize(100, 50);
     QHBoxLayout *layout = new QHBoxLayout;
     layout->addWidget(nameEdit);
@@ -34,16 +36,27 @@ void Game::start() {
             player = new Player();
         else
             player = new Player(qString.toStdString());
-//        QLabel *label = new QLabel(QString::fromStdString(player->getName()), this);
-//        label->show();
-        delete nameEdit;
-        delete qPushButton;
+//        delete nameEdit;
+//        delete qPushButton;
 //        delete this->window();
         this->window()->hide();
-        level= new Level();
-        mainW= new MainWindow();
+        level = new Level();
+        mainW = new MainWindow();
         mainW->SetData();
         mainW->mainwindow->show();
+        ///todo figure this out
+        QTimer *timer = new QTimer(this);
+
+        for(int i=0;i<level->getNextEnemies(level->getWave());i++)
+        {
+            Enemy *enemy = new Enemy(1, 1, "enemy.png", mainW);
+            enemy->setCoordinates(i,0);
+            connect(timer, SIGNAL(timeout()), enemy, SLOT(reposition()));
+            mainW->mainwindow->layout()->addWidget(enemy);
+        }
+
+        timer->start(1000);
+
     }
 }
 
