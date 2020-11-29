@@ -28,6 +28,7 @@ void MainWindow::AddTowerToMap(int x, int y)
 	item->setPos(pozX * 70, pozY * 70);
 	gameScene->addItem(item);
 	
+	
 
 }
 

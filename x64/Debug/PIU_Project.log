@@ -1,8 +1,3 @@
-﻿  moc headers\MainWindow.h
-  MainClass.cpp
-  MainWindow.cpp
-C:\Users\Ionut\Desktop\FACULTATE\FACULTATE\Anul4\Sem1\PIU\PIU_Git\PIU-project\MainClass.cpp(31,1): warning C4273: 'QGraphicsScene::mousePressEvent': inconsistent dll linkage
-C:\Qt1\5.15.1\msvc2019_64\include\QtWidgets\qgraphicsscene.h(283,18): message : see previous definition of 'mousePressEvent' (compiling source file MainClass.cpp)
-C:\Users\Ionut\Desktop\FACULTATE\FACULTATE\Anul4\Sem1\PIU\PIU_Git\PIU-project\classes\MainWindow.cpp(98): warning C4715: 'MainWindow::TowerPosition': not all control paths return a value
-  moc_MainWindow.cpp
+﻿  MainWindow.cpp
+C:\Users\Ionut\Desktop\FACULTATE\FACULTATE\Anul4\Sem1\PIU\PIU_Git\PIU-project\classes\MainWindow.cpp(99): warning C4715: 'MainWindow::TowerPosition': not all control paths return a value
   PIU_Project.vcxproj -> C:\Users\Ionut\Desktop\FACULTATE\FACULTATE\Anul4\Sem1\PIU\PIU_Git\PIU-project\x64\Debug\PIU_Project.exe
