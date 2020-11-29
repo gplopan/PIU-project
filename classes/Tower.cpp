@@ -13,12 +13,16 @@ Tower::Tower(int x, int y) {
     this->y=y;
 }
 
-Tower::Tower(int p, int rt, int c, int x, int y) {
+///will be replaced with initializing from a file maybe
+Tower::Tower(int p, int rt, int c, int range, string sprite,QWidget * parent) {
     power=p;
     reloadTime=rt;
     cost=c;
-    this->x=x;
-    this->y=y;
+    this->range=range;
+    spriteName=sprite;
+    std::string path="/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/images/";
+    QPixmap pix(QString::fromStdString(path.append(spriteName)));
+    this->setPixmap(pix.scaled(70, 70, Qt::KeepAspectRatio));
 }
 
 //todo
