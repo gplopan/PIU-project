@@ -27,7 +27,8 @@ int Level::getNextEnemies(int w) {
         throw "Not sure what this will do. maybe do a bool finished for the level?";
 }
 
-///level 1
+///level 1 for easy testing
+///do not use except for testing in early stages
 Level::Level() {
     level=1;
     nWaves=1;
@@ -36,6 +37,8 @@ Level::Level() {
     for(int i=0;i<nWaves;i++)
         waves[i]=(i+1)*level;
     finished=false;
+//    board=new Board();
+//    board->setBoard(level);
 }
 
 ///generic constructor
@@ -47,6 +50,8 @@ Level::Level(int l, int w, int rew) {
     for(int i=0;i<nWaves;i++)
         waves[i]=(i+1)*level;
     finished=false;
+    //board=new Board();
+    //board->setBoard(level);
 }
 
 ///destructor
@@ -59,6 +64,7 @@ Level::~Level() {
 ///update the current wave and the state of the enemy array and the finished flag
 void Level::update() {
     throw "not implemented yet. nu stiu exact ce sa faca";
+    /// call .move() for the enemies at every timeout
 }
 
 

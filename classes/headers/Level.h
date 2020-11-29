@@ -6,7 +6,9 @@
 #define CLASSES_LEVEL_H
 
 
-class Level {
+#include "Board.h"
+
+ class Level {
 private:
     int level; //number of level
     int nWaves; //number of enemy waves. same as level??
@@ -14,6 +16,7 @@ private:
     int reward; // scor and resources after the end of the level
     int currentWave=0; //current wave in the level
     bool finished;
+    Board * board;
 public:
     Level();
     ~Level();
@@ -24,6 +27,7 @@ public:
     int getNextEnemies(int w);
     void update();
     void reset();
+//    public
 };
 
 

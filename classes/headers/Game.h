@@ -10,17 +10,17 @@
 #include <QtWidgets/QPushButton>
 #include "Player.h"
 #include "Level.h"
+#include "MainWindow.h"
 
 ///ma gandesc ca cel mai bine ar fi sa mosteneasca widget ca sa putem tine all the bullshit here
 class Game : public QWidget {
 Q_OBJECT
 private:
     Player *player;
-    Level level;
+    Level * level;
     QLineEdit * nameEdit;
     QPushButton *qPushButton;
-
-    //other bs
+    MainWindow * mainW;
 public:
     Game(QWidget *parent = nullptr);
     ~Game();

@@ -3,6 +3,7 @@
 //
 
 #include "headers/Game.h"
+#include "headers/MainWindow.h"
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
@@ -13,16 +14,13 @@ Game::Game(QWidget *parent) {
     nameEdit = new QLineEdit("Player", parent = this);
     nameEdit->setAlignment(Qt::AlignLeft);
     nameEdit->setMaxLength(20);
-    qPushButton = new QPushButton(
-            QIcon("/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/images/cash.png"), "START",
-            parent = this);
+    qPushButton = new QPushButton("START",parent = this);
     qPushButton->setFixedSize(100, 50);
     QHBoxLayout *layout = new QHBoxLayout;
     layout->addWidget(nameEdit);
     layout->addWidget(qPushButton);
     this->setLayout(layout);
     QObject::connect(qPushButton, SIGNAL(clicked()), this, SLOT(start()));
-
 }
 
 Game::~Game() {
@@ -36,10 +34,16 @@ void Game::start() {
             player = new Player();
         else
             player = new Player(qString.toStdString());
-        QLabel *label = new QLabel(QString::fromStdString(player->getName()), this);
-        label->show();
+//        QLabel *label = new QLabel(QString::fromStdString(player->getName()), this);
+//        label->show();
         delete nameEdit;
         delete qPushButton;
+//        delete this->window();
+        this->window()->hide();
+        level= new Level();
+        mainW= new MainWindow();
+        mainW->SetData();
+        mainW->mainwindow->show();
     }
 }
 

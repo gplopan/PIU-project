@@ -13,7 +13,6 @@ public:
     QMainWindow *mainwindow;
     void SetData();
 public slots:
-
     void AddTowerToMap(int x, int y);
 
 };

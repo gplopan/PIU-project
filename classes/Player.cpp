@@ -37,6 +37,8 @@ void Player::updateScore(int s) {
     score+=s;
 }
 
+
+///generic player 'account'
 Player::Player() {
     name="Player";
     score=0;
