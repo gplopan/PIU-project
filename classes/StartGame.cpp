@@ -15,18 +15,40 @@ StartGame::StartGame() : QObject()
 
 
 
-void StartGame::sendClickData(int x, int y)
+void StartGame::emitToAddTower(int x, int y)
+{}
+void StartGame::emitToRotateTower(int x, int y)
+{}
+void StartGame::emitTurnToEnemy(int x, int y)
 {}
 
-bool StartGame::CanBuild(int x, int y)
+int StartGame::GetAction(int x, int y)
 {
+	
 	int** _board = board.getBoard();
 	int pozX = x / 70;
 	int pozY = y / 70;
-	
-	if (_board[pozY][pozX] == 0)
-		return true;
-	return false;
+
+	int data = _board[pozY][pozX];
+
+	if (data == 0)
+		_board[pozY][pozX] = 5;
+	return data;
 }
+
+int StartGame::RotateTower(int x, int y)
+{
+	
+	int** _board = board.getBoard();
+	int pozX = x / 70;
+	int pozY = y / 70;
+
+	if(_board[pozY][pozX] == 5)
+	{
+		return x * y;
+	}
+	return -1;
+}
+
 
 

@@ -11,6 +11,7 @@ Tower::Tower(int x, int y) {
     cost=2;
     this->x=x;
     this->y=y;
+    
 }
 
 Tower::Tower(int p, int rt, int c, int x, int y, int range) {
@@ -52,4 +53,3 @@ int Tower::getX() {
 int Tower::getY() {
     return y;
 }
-

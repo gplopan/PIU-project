@@ -2,6 +2,7 @@
 // Created by ionut on 24.11.2020.
 // Code written by ionut & georgiana
 //
+#include "Tower.h"
 #include "../headers/Board.h"
 #include "../headers/Includes.h"
 
@@ -22,10 +23,13 @@ class StartGame : public QObject
 public:
 	Board board;
 	StartGame();
-	bool CanBuild(int x, int y);
+	int GetAction(int x, int y);
+	int RotateTower(int x, int y);
 	
 signals:
-	inline void sendClickData(int x, int y);
+	inline void emitToAddTower(int x, int y);
+	inline void emitToRotateTower(int x, int y);
+	inline void emitTurnToEnemy(int x, int y);
 };
 
 #endif 

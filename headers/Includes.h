@@ -10,4 +10,11 @@
 #include <QDebug>
 #include <QWidget>
 #include <fstream>
+#include <qgraphicsitemanimation.h>
+#include <qgraphicsitem.h>
+#include <qgraphicsscene.h>
+#include <qgraphicsview.h>
+#include <QGraphicsPixmapItem>
+#include <QGraphicsSceneMouseEvent>
+#include <QTransform>
 #include <string>
