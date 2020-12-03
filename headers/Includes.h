@@ -8,6 +8,7 @@
 #include <QMouseEvent>
 #include <QPalette>
 #include <QDebug>
+#include <QGraphicsProxyWidget>
 #include <QWidget>
 #include <fstream>
 #include <qgraphicsitemanimation.h>
@@ -18,3 +19,7 @@
 #include <QGraphicsSceneMouseEvent>
 #include <QTransform>
 #include <string>
+#include <qlineedit.h>
+#include <QToolBar>
+#include <QToolButton>
+#include <QVector>

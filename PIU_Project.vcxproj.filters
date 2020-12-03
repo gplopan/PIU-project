@@ -22,37 +22,40 @@
       <Extensions>qrc;*</Extensions>
       <ParseFiles>false</ParseFiles>
     </Filter>
-    <Filter Include="Classes">
-      <UniqueIdentifier>{d9c3e7f1-69fa-4747-8607-52335b6672de}</UniqueIdentifier>
+    <Filter Include="classes">
+      <UniqueIdentifier>{2cc681de-17f7-481c-bdc7-8a3b0272fcf2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MainClass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="classes\Board.cpp">
-      <Filter>Classes</Filter>
+      <Filter>classes</Filter>
+    </ClCompile>
+    <ClCompile Include="classes\Bullet.cpp">
+      <Filter>classes</Filter>
     </ClCompile>
     <ClCompile Include="classes\Enemy.cpp">
-      <Filter>Classes</Filter>
+      <Filter>classes</Filter>
     </ClCompile>
     <ClCompile Include="classes\Functions.cpp">
-      <Filter>Classes</Filter>
+      <Filter>classes</Filter>
     </ClCompile>
     <ClCompile Include="classes\Level.cpp">
-      <Filter>Classes</Filter>
+      <Filter>classes</Filter>
     </ClCompile>
     <ClCompile Include="classes\MainWindow.cpp">
-      <Filter>Classes</Filter>
+      <Filter>classes</Filter>
     </ClCompile>
     <ClCompile Include="classes\Player.cpp">
-      <Filter>Classes</Filter>
+      <Filter>classes</Filter>
     </ClCompile>
     <ClCompile Include="classes\StartGame.cpp">
-      <Filter>Classes</Filter>
+      <Filter>classes</Filter>
     </ClCompile>
     <ClCompile Include="classes\Tower.cpp">
-      <Filter>Classes</Filter>
+      <Filter>classes</Filter>
+    </ClCompile>
+    <ClCompile Include="MainClass.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -60,19 +63,16 @@
     <Text Include="informatii.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="headers\Board.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="headers\Functions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="headers\Includes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="headers\Level.h">
+    <ClInclude Include="headers\Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="headers\Player.h">
+    <ClInclude Include="headers\Board.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="headers\Tower.h">
@@ -87,6 +87,12 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="headers\Enemy.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="headers\Bullet.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="headers\Level.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

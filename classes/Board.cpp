@@ -8,8 +8,7 @@
 
 using namespace std;
 
-Board::Board(int level) {
-	this->level = level;
+Board::Board() {
 	this->board = new int* [11];
 	for (int i = 0;i < 11;i++)
 		this->board[i] = new int[18];
@@ -22,18 +21,16 @@ Board::Board(int level) {
 	
 }
 
-Board::Board()
-{}
-
 int** Board::getBoard()
 {
 	return this->board;
 }
 
-int Board::getLevel()
+Board::~Board()
 {
-	return this->level;
+	delete this->board;
 }
+
 
 void Board::setBoard(int mapLevel)
 {

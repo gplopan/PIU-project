@@ -17,22 +17,21 @@ private:
     int speed;
     //bool alive=true;
     int x, y;
-public:
-
     std::string sprintName;
+public:
     Enemy();
     Enemy(int h, int s, std::string sprint, QWidget* parent = nullptr);
     ~Enemy() = default;
     int getHealth();
     int getX();
     int getY();
+    std::string getFilename();
     void setCoordinates(int x, int y);
     void TakeDamage(int damage);
-    //    void move(int nx, int ny);
+    void walk(int nx, int ny);
     void die();
 public slots:
     void reposition();
-    //    void reposition(QMouseEvent * event);
 };
 
 

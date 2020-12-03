@@ -4,26 +4,32 @@
 
 #include "../headers/Enemy.h"
 
-//todo niste enum-uri sau ceva pentru diferite clase de inamici ca sa fie mai usor de creat? sau cu citire din fisier
 ///constructor of enemy class with specific atributes
-Enemy::Enemy(int h, int s, std::string sprint,QWidget * parent) {
-    this->health=h;
-    this->speed=s;
-    sprintName=sprint;
+Enemy::Enemy(int h, int s, std::string sprite, QWidget* parent) {
+    this->health = h;
+    this->speed = s;
+    sprintName = sprite;
     this->setParent(parent);
+    std::string path = "/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/images/";
+    QPixmap pix(QString::fromStdString(path.append(sprintName)));
+    this->setPixmap(pix.scaled(70, 70, Qt::KeepAspectRatio));
 }
 
 ///level 1 -> general type of enemy
 ///will require alterations on values along the way
 Enemy::Enemy() {
-    health=2;
-    speed=1;
+    health = 2;
+    speed = 1;
+    QPixmap pix("/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/images/enemy.png");
+    int w = 100;
+    int h = 100;
+    this->setPixmap(pix.scaled(w, h, Qt::KeepAspectRatio));
 }
 
 ///lower the health of the enemy
 void Enemy::TakeDamage(int damage) {
-    health-=damage;
-    if(health<=0)
+    health -= damage;
+    if (health <= 0)
         die();
 }
 
@@ -39,32 +45,41 @@ void Enemy::die() {
     //alive=false
 }
 
+///x coordinate of the enemy
 int Enemy::getX() {
     return x;
 }
 
+/// y coordinate of the enemy
 int Enemy::getY() {
     return y;
 }
 
+
+//todo further tests will have to be implemented
 ///move the enemy to the (nx,ny) coordinates
-//void Enemy::move(int nx, int ny) {
-//    x=nx;
-//    y=ny;
-//    ///todo further tests will have to be implemented
-//}
+void Enemy::walk(int nx, int ny) {
+    this->setGeometry(QRect(nx, ny, 100, 100));
+    x += nx;
+    y += ny;
+}
 
+/// set the (x, y). not recommended except for the init stage of the level
 void Enemy::setCoordinates(int x, int y) {
-    this->x=x;
-    this->y=y;
+    this->x = x;
+    this->y = y;
+    this->setGeometry(QRect(y * 70, x * 70 - 20, 70, 70));
 }
 
+///slot function. moves the enemy graphically
 void Enemy::reposition() {
-    this->setGeometry(QRect(300,200,100,100));
+    //    walk(10,0);
+    setCoordinates(x, y + 1);
 }
 
-//void Enemy::reposition(QMouseEvent *event) {
-//    this->setGeometry(QRect(0,0,event->pos().x(),event->pos().y()));
-//}
+///returns the name of the sprite. does not include the path to the root directory
+std::string Enemy::getFilename() {
+    return sprintName;
+}
 
 

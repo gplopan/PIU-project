@@ -6,20 +6,20 @@
 
 ///level 1 - generic values for a generic tower
 Tower::Tower(int x, int y) {
-    power=1;
-    reloadTime=2;
-    cost=2;
-    this->x=x;
-    this->y=y;
-    
+    power = 1;
+    reloadTime = 2;
+    cost = 2;
+    this->x = x;
+    this->y = y;
+
 }
 
 Tower::Tower(int p, int rt, int c, int x, int y, int range) {
-    power=p;
-    reloadTime=rt;
-    cost=c;
-    this->x=x;
-    this->y=y;
+    power = p;
+    reloadTime = rt;
+    cost = c;
+    this->x = x;
+    this->y = y;
     this->range = range;
 }
 

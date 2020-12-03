@@ -15,7 +15,7 @@ private:
     int x;
     int y;
     int range;
-	
+
 public:
     Tower(int x, int y);
     Tower(int p, int rt, int c, int x, int y, int range);

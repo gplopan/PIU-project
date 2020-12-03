@@ -5,8 +5,10 @@ MainWindow::~MainWindow() {
     delete gameScene;
 }
 
-MainWindow::MainWindow() : QGraphicsScene(), gameScene(new QGraphicsScene)
+MainWindow::MainWindow() : QGraphicsView(),QGraphicsScene(), gameScene(new QGraphicsScene), gameView(new QGraphicsView)
 {
+	QObject::connect(&start_game, &StartGame::emitToAddTower, this, &MainWindow::AddTowerToMap);
+	QObject::connect(&start_game, &StartGame::emitTurnToEnemy, this, &MainWindow::RotateTowardsEnemy);
 	
 }
 /// <summary>
@@ -30,6 +32,44 @@ void MainWindow::AddTowerToMap(int x, int y)
 	
 	
 
+}
+
+void MainWindow::SetData()
+{
+	gameScene = new QGraphicsScene(0, 25, 1260, 784);
+	this->gameScene->installEventFilter(this);
+	QPixmap imagename("./images/level2.png");
+	gameScene->addPixmap(imagename);
+
+	
+	gameView->setScene(gameScene);
+	gameView->setFixedSize(1260, 924);
+	
+	///create toolbar and toolbutton w/ icon
+	QToolBar* qToolBar = new QToolBar();
+	QToolButton* qToolButton = new QToolButton();
+	QIcon icon("./images/tower1p1.png");
+	qToolButton->setIcon(icon);
+	
+
+	///add button to bar
+	qToolBar->addWidget(qToolButton);
+	///make bar movable - fix for not knowing how to move it
+	qToolBar->setMovable(true);
+	///set the icon size to the size of the button
+	qToolBar->setIconSize(QSize(qToolButton->size().width(), qToolButton->size().height()));
+
+
+	///// TODO legat de ce a facut ionut cu butonul din toolbar. cumva butonul trebuie sa activeze un singur click pentru
+	///// plasarea unui tower si dupa sa trebuiasca apasat iar SAU sa fie valabil pana la dezactivare
+	qToolBar->setFixedSize(1260, 80);
+	QGraphicsProxyWidget* item = gameScene->addWidget(qToolBar);
+	item->setPos(0, 784);
+	item->setZValue(1);
+	///860 -> 790 am ecran mic si mi se pare ca imaginea loops oricum in partea de jos la 860 cu noile rezolutii
+	gameView->show();
+	
+	
 }
 
 /// <summary>
@@ -98,3 +138,51 @@ QString MainWindow::TowerPosition(int tx, int ty, int ex, int ey)
 	}
 }
 
+bool MainWindow::eventFilter(QObject* watched, QEvent* event)
+{
+	if (watched == gameScene) {
+		QGraphicsSceneMouseEvent* mouseSceneEvent;
+		if (event->type() == QEvent::GraphicsSceneMousePress) {
+			mouseSceneEvent = static_cast<QGraphicsSceneMouseEvent*>(event);
+			qDebug() << " x = " << mouseSceneEvent->scenePos().x() << " y = " << mouseSceneEvent->scenePos().y();
+			int pozX = mouseSceneEvent->scenePos().x();
+			int pozY = mouseSceneEvent->scenePos().y();
+
+			if (pozX / 70 < 18 && pozY / 70 < 11) {
+				int _action = this->start_game.GetAction(pozX, pozY);
+				qDebug() << " action= " << _action;
+				switch (_action)
+				{
+				case 0:
+					// se poate construi turn
+					emit this->start_game.emitToAddTower(pozX, pozY);
+					break;
+				case 5:
+					// exista turn
+
+					break;
+				case 1:
+					// este pe drum
+					emit this->start_game.emitTurnToEnemy(pozX, pozY);
+					break;
+				case 2:
+					// este pe colt (va fi schimbat probabil)
+					emit this->start_game.emitTurnToEnemy(pozX, pozY);
+					break;
+
+				default:
+					break;
+				}
+			}
+		}
+		
+	}
+	return QGraphicsView::eventFilter(watched, event);
+}
+/*
+void QGraphicsScene::mousePressEvent(QGraphicsSceneMouseEvent* event)
+{
+
+	
+	}
+}*/
