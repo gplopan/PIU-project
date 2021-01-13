@@ -30,28 +30,27 @@ int Level::getNextEnemies(int w) {
 ///level 1 for easy testing
 ///do not use except for testing in early stages
 Level::Level() {
-    level=1;
-    nWaves=1;
-    reward=10;
-    waves=new int[nWaves];
-    for(int i=0;i<nWaves;i++)
-        waves[i]=(i+1)*level+1;
-    finished=false;
-//    board=new Board();
-//    board->setBoard(level);
+    level = 1;
+    nWaves = 1;
+    reward = 10;
+    waves = new int[nWaves];
+    for (int i = 0;i < nWaves;i++)
+        waves[i] = (i + 1) * level + 1;
+    finished = false;
+    this->board.setBoard(1);
+
 }
 
 ///generic constructor
 Level::Level(int l, int w, int rew) {
-    level=l;
-    nWaves=w;
-    reward=rew;
-    waves=new int[nWaves];
-    for(int i=0;i<nWaves;i++)
-        waves[i]=(i+1)*level;
-    finished=false;
-    //board=new Board();
-    //board->setBoard(level);
+    level = l;
+    nWaves = w;
+    reward = rew;
+    waves = new int[nWaves];
+    for (int i = 0;i < nWaves;i++)
+        waves[i] = (i + 1) * level;
+    finished = false;
+
 }
 
 ///destructor
@@ -78,6 +77,16 @@ void Level::reset() {
     throw "not implemented yet";
 }
 
+int Level::GetAction(int x, int y)
+{
 
+    int** _board = this->board.getBoard();
+    int pozX = x / 70;
+    int pozY = y / 70;
 
+    int data = _board[pozY][pozX];
 
+    if (data == 0)
+        _board[pozY][pozX] = 5;
+    return data;
+}

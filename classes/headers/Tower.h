@@ -10,8 +10,7 @@
 
 using namespace std;
 
-class Tower: public QLabel {
-Q_OBJECT
+class Tower{
 private:
     int power;
     int reloadTime;
@@ -19,17 +18,19 @@ private:
     int x;
     int y;
     int range;
-    string spriteName;
+//    string spriteName;
     // Bullet * bullet;
 public:
     Tower(int x, int y);
-    Tower(int p, int rt, int c, int range,string sprite,QWidget * parent=nullptr);
+//    Tower(int p, int rt, int c, int range,string sprite,QWidget * parent=nullptr);
+    Tower(int p, int rt, int c, int range);
     ~Tower() {}
     void shoot();
     int getPower();
     int getTime();
     int getX();
     int getY();
+    int getRange();
 };
 
 

@@ -4,34 +4,37 @@
 #include <iostream>
 #include <QtWidgets/QWidget>
 #include <QtWidgets/QLabel>
-#include <QMouseEvent>
+#include <QGraphicsItem>
 
 #ifndef CLASSES_ENEMY_H
 #define CLASSES_ENEMY_H
 
 
-class Enemy: public QLabel {
-Q_OBJECT
+class Enemy: public QGraphicsPixmapItem {
+//Q_OBJECT
 private:
     int health;
     int speed;
     //bool alive=true;
     int x,y;
     std::string sprintName;
+
 public:
     Enemy();
-    Enemy(int h, int s, std::string sprint, QWidget * parent= nullptr);
-    ~Enemy()= default;
+    Enemy(const QPixmap &pixmap, QGraphicsItem *parent = nullptr);
+    Enemy(int h, int s, std::string sprint);
+    ~Enemy(){};
     int getHealth();
     int getX();
     int getY();
     std::string getFilename();
     void setCoordinates(int x, int y);
     void TakeDamage(int damage);
-    void walk(int nx, int ny);
     void die();
-public slots:
-    void reposition();
+
+protected:
+//    void advance(int step) override;
+
 };
 
 

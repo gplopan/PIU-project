@@ -18,10 +18,12 @@ private:
     int reward; // scor and resources after the end of the level
     int currentWave = 0; //current wave in the level
     bool finished;
-    Board *board;
+    Board board;
+
 public:
     Level();
     ~Level();
+    int GetAction(int x, int y);
     Level(int l, int w, int rew);
     int getWaveNumber();
     int *getEnemies();
