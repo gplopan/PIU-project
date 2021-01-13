@@ -14,22 +14,23 @@
 
 class StartGame : public QObject {
 Q_OBJECT
-private:
-    Player *player;
-    Level * level;
-
 public:
+    Player *player;
+    Level *level;
     StartGame();
 	StartGame(QString qString);
 	int GetAction(int x, int y);
 	~StartGame();
+	void impulse();
 
 signals:
 	inline void emitToAddTower(int x, int y);
 	inline void emitToRotateTower(int x, int y);
 	inline void emitTurnToEnemy(int x, int y);
 	inline void drawEnemyInScene();
+
 public slots:
+    void getTile(int * tile,int x, int y);
     void generateWave();
 };
 

@@ -57,3 +57,7 @@ int Tower::getRange()
 {
     return range;
 }
+
+int Tower::getCost() {
+    return cost;
+}

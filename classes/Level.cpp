@@ -35,10 +35,9 @@ Level::Level() {
     reward = 10;
     waves = new int[nWaves];
     for (int i = 0;i < nWaves;i++)
-        waves[i] = (i + 1) * level + 1;
-    finished = false;
+        waves[i] = (i + 1) * level+1;
     this->board.setBoard(1);
-
+    board.getStartPoint(&startX,&startY);
 }
 
 ///generic constructor
@@ -49,25 +48,12 @@ Level::Level(int l, int w, int rew) {
     waves = new int[nWaves];
     for (int i = 0;i < nWaves;i++)
         waves[i] = (i + 1) * level;
-    finished = false;
-
+    board.getStartPoint(&startX,&startY);
 }
 
 ///destructor
 Level::~Level() {
     delete[] waves;
-    finished=true;
-}
-
-//todo
-///update the current wave and the state of the enemy array and the finished flag
-void Level::update() {
-//    throw "not implemented yet. nu stiu exact ce sa faca";
-    /// call .move() for the enemies at every timeout
-    for(int i=0;i<waves[currentWave];i++)
-    {
-
-    }
 }
 
 
@@ -76,6 +62,7 @@ void Level::update() {
 void Level::reset() {
     throw "not implemented yet";
 }
+
 
 int Level::GetAction(int x, int y)
 {
@@ -90,3 +77,20 @@ int Level::GetAction(int x, int y)
         _board[pozY][pozX] = 5;
     return data;
 }
+
+///returns the value of  the tile at (x,y)
+int Level::getPath(int x, int y) {
+    return board.getBoard()[x][y];
+}
+
+///signals to the StartGame that the level is over
+void Level::finishedLevel(){
+}
+
+///increments the currentWave variable. if the currentWave is the last one the finishedLevel signal is emitted
+void Level::nextWave() {
+    currentWave++;
+    if(currentWave==nWaves)
+        finishedLevel();
+}
+

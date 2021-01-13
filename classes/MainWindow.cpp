@@ -2,6 +2,7 @@
 #include <QLayout>
 #include <QGraphicsSceneMouseEvent>
 #include <QEvent>
+#include <QTimer>
 #include <QtWidgets/QToolButton>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QGraphicsPixmapItem>
@@ -30,13 +31,14 @@ void MainWindow::AddTowerToMap(int x, int y)
 	//calculam pozitia sa punem turnul fix pe tile
 	int pozX = x / 70;
 	int pozY = y / 70;
-
-	towers.append(Tower(pozX, pozY));
-	QPixmap tower("/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/images/tower1p4.png");
-	QGraphicsItem* item = new QGraphicsPixmapItem(tower);
-	item->setPos(pozX * 70, pozY * 70);
-	gameScene->addItem(item);
-
+	Tower towerobj(pozX,pozY);
+    if(start_game->player->getResources()-towerobj.getCost()>0) {
+        towers.append(Tower(pozX, pozY));
+        QPixmap tower("/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/images/tower1p4.png");
+        QGraphicsItem *item = new QGraphicsPixmapItem(tower);
+        item->setPos(pozX * 70, pozY * 70);
+        gameScene->addItem(item);
+    }
 }
 
 void MainWindow::SetData()
@@ -45,8 +47,6 @@ void MainWindow::SetData()
 	gameScene->installEventFilter(this);
 	QPixmap imagename("/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/images/level2.png");
 	gameScene->addPixmap(imagename);
-
-
 
 	gameView->setFixedSize(1260, 799);
 
@@ -166,19 +166,13 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
 					// se poate construi turn
 					emit this->start_game->emitToAddTower(pozX, pozY);
 					break;
-				case 5:
-					// exista turn
-
-					break;
 				case 1:
+				case 6:
+				case 7:
+				case 8:
 					// este pe drum
 					emit this->start_game->emitTurnToEnemy(pozX, pozY);
 					break;
-				case 2:
-					// este pe colt (va fi schimbat probabil)
-					emit this->start_game->emitTurnToEnemy(pozX, pozY);
-					break;
-
 				default:
 					break;
 				}
@@ -192,7 +186,7 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
 }
 
 
-void MainWindow::beginWave() {
+void MainWindow::beginLevel() {
 
 }
 
@@ -202,24 +196,29 @@ void MainWindow::start(QString playerName)
 {
     start_game=new StartGame(playerName);   //create the start_game class with everything behind it
     SetData(); //prepare the graphic part of the game
+
     QObject::connect(start_game, SIGNAL(emitToAddTower(int, int)), this, SLOT(AddTowerToMap(int, int)));
     QObject::connect(start_game, &StartGame::emitTurnToEnemy, this, &MainWindow::RotateTowardsEnemy);
-    QObject::connect(this, SIGNAL(beginWave()), start_game, SLOT(generateWave()));
+
+    QObject::connect(this, SIGNAL(beginLevel()), start_game, SLOT(generateWave()));
     QObject::connect(start_game, SIGNAL(drawEnemyInScene()), this, SLOT(drawEnemy()));
-    beginWave();
+
+    beginLevel(); //signal the start game to start the enemy generation
+
+    QTimer *timer = new QTimer();
+    //at every timeout the advance slot is called -- will generate advance signals towards all qgraphicsitems  in the scene
+    QObject::connect(timer, SIGNAL(timeout()), gameScene, SLOT(advance()));
+    timer->start(2000);
 
 }
 
 void MainWindow::drawEnemy() {
-    QPixmap tower("/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/images/enemy.png");
-    Enemy* enemy=new Enemy(tower);
-    Enemy* enemy2=new Enemy();
+    auto* enemy=new Enemy();
+    enemy->setCoordinates(start_game->level->startX,start_game->level->startY);
 
-//    QGraphicsItem* item = new QGraphicsPixmapItem(tower);
-//    item->setPos(70,70);
-//    gameScene->addItem(item);
-//    gameScene->addItem(enemy);
-    gameScene->addItem(enemy2);
+    enemy->setPos(mapToScene(enemy->getX()*70,enemy->getY()*70-10));
+    QObject::connect(enemy, SIGNAL(getNextMovement(int *, int, int)), start_game, SLOT(getTile(int *, int, int)));
+    gameScene->addItem(enemy); //add an enemy on the map
 }
 
 

@@ -19,5 +19,6 @@ add_executable(classes main.cpp
         StartGame.cpp headers/StartGame.h
         Board.cpp headers/Board.h
         Bullet.cpp headers/Bullet.h
-        MainWindow.cpp headers/MainWindow.h Menu.cpp Menu.h)
+        MainWindow.cpp headers/MainWindow.h
+        Menu.cpp headers/Menu.h)
 target_link_libraries(classes Qt5::Widgets)

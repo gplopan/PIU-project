@@ -17,10 +17,10 @@ private:
     int *waves; // enemies left per wave. len(waves)=nWaves
     int reward; // scor and resources after the end of the level
     int currentWave = 0; //current wave in the level
-    bool finished;
     Board board;
 
 public:
+    int startX, startY; //coordinates for the spawning point
     Level();
     ~Level();
     int GetAction(int x, int y);
@@ -29,9 +29,13 @@ public:
     int *getEnemies();
     int getWave();
     int getNextEnemies(int w);
+    void nextWave();
+    int getPath(int x, int y);
+signals:
+    inline void finishedLevel();
 public slots:
-    void update();
     void reset();
+
 };
 
 

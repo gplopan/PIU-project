@@ -35,14 +35,29 @@ int StartGame::GetAction(int x, int y) {
     return this->level->GetAction(x, y);
 }
 
+///signal that tells the mainwindow to draw an enemy object
+//todo figure how the timer works. should code be before the start or in a separate function?
 void StartGame::generateWave() {
-
-    ///todo figure this out
     QTimer *timer = new QTimer();
+    timer->start(1500);
+//    for (int i = 0; i < level->getNextEnemies(level->getWave()); i++) {
+//        timer->callOnTimeout(this->drawEnemyInScene());
+//    }
+    drawEnemyInScene();
+    //for more than 1 wave? call on nextwave somehow
+}
+
+
+
+///slot that returns the value of the tile at (x,y)
+void StartGame::getTile(int * tile,int x, int y) {
+    *tile=level->getPath(y,x);
+}
+
+void StartGame::impulse() {
     for (int i = 0; i < level->getNextEnemies(level->getWave()); i++) {
         drawEnemyInScene();
     }
-    timer->start(2000);
 }
 
 

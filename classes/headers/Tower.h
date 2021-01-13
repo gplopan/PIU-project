@@ -31,6 +31,7 @@ public:
     int getX();
     int getY();
     int getRange();
+    int getCost();
 };
 
 

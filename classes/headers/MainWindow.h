@@ -23,7 +23,7 @@ public:
     QString TowerPosition(int tx, int ty, int ex, int ey);
     bool eventFilter(QObject* watched, QEvent* event);
 signals:
-    inline void beginWave();
+    inline void beginLevel();
 
 public slots:
     void AddTowerToMap(int x, int y);

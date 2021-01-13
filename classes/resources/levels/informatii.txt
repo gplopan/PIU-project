@@ -1,12 +1,15 @@
 pentru board:
 
 0 = liber
-1 = drum
-2 = colt drum (stanga/ dreapta face drumul :)) )
+1 = drum -> mers spre dreapta
 3 = start drum
 4 = finish drum
-9 = nu se poate construi turn
 5 = exista turn
+9 = nu se poate construi turn
+
+6 = drum jos
+7 = drum sus
+8 = drum stanga
 
 ATENTIE!
 

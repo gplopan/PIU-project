@@ -52,7 +52,7 @@ int Enemy::getY() {
     return y;
 }
 
-///deprecated
+
 /// set the (x, y). not recommended except for the init stage of the level
 void Enemy::setCoordinates(int x, int y) {
     this->x=x;
@@ -74,14 +74,43 @@ Enemy::Enemy(const QPixmap &pixmap, QGraphicsItem *parent) : QGraphicsPixmapItem
     sprintName="/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/images/enemy.png";
 }
 
+void Enemy::getNextMovement(int *tile, int x, int y) {
+}
 
 
-///called by the graphicscene
-//todo
-//void Enemy::advance(int step) {
-////    mapFromScene(QRect(y * 70, x*70-20, 70, 70));
-//    QGraphicsItem::advance(step);
-//}
+///slot override - called by the graphicscene at every timeout by the signal advance()
+void Enemy::advance(int phase) {
+    int currentTile=0;
+    getNextMovement(&currentTile, x, y);
+//    std::cout<<currentTile;
+    switch(currentTile)
+    {
+        case 1:
+        case 3:
+            x++;
+            setPos(QPointF(x*70+15,y*70));
+//            if(x*70+15>(x+1)*70)
+
+            break;
+        case 6:
+            y++;
+            setPos(QPointF(x*70,y*70-20));
+            break;
+        case 7:
+            y--;
+            setPos(QPointF(x*70,y*70+20));
+            break;
+        case 8:
+            x--;
+            setPos(QPointF(x*70,y*70));
+            break;
+        case 4:
+            std::cout<<"I WON";
+        default:
+            break;
+    }
+
+}
 
 
 

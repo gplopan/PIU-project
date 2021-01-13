@@ -14,6 +14,7 @@ public:
     Board();
     int **getBoard();
     void setBoard(int mapLevel);
+    void getStartPoint(int *x, int *y);
 };
 
 

@@ -3,7 +3,7 @@
 #include <QGraphicsPixmapItem>
 #include <QHBoxLayout>
 #include "headers/MainWindow.h"
-#include "Menu.h"
+#include "headers/Menu.h"
 
 int main(int argc, char **argv) {
     QApplication app(argc, argv);

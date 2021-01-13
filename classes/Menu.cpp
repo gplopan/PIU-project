@@ -3,7 +3,7 @@
 //
 
 #include <QHBoxLayout>
-#include "Menu.h"
+#include "headers/Menu.h"
 
 Menu::Menu() {
     menuWindow = new QWidget; //menu window with the start button and the player name

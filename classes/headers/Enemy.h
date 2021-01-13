@@ -10,8 +10,8 @@
 #define CLASSES_ENEMY_H
 
 
-class Enemy: public QGraphicsPixmapItem {
-//Q_OBJECT
+class Enemy: public QObject, public QGraphicsPixmapItem {
+Q_OBJECT
 private:
     int health;
     int speed;
@@ -31,10 +31,10 @@ public:
     void setCoordinates(int x, int y);
     void TakeDamage(int damage);
     void die();
-
-protected:
-//    void advance(int step) override;
-
+signals:
+    inline void getNextMovement(int *tile, int x, int y);
+public slots:
+    void advance(int phase) override;
 };
 
 
