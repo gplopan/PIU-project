@@ -29,6 +29,7 @@ public:
     int *getEnemies();
     int getWave();
     int getNextEnemies(int w);
+    int getLevelNumber();
     void nextWave();
     int getPath(int x, int y);
 signals:

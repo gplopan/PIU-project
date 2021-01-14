@@ -16,12 +16,15 @@ public:
     QGraphicsScene* gameScene;
     StartGame * start_game;
     QVector<Tower> towers;
+    QTimer *advanceTimer;
 
     explicit MainWindow();
     ~MainWindow();
-    void SetData();
+    void SetData(int level);
+    void SetData2(int level);
     QString TowerPosition(int tx, int ty, int ex, int ey);
     bool eventFilter(QObject* watched, QEvent* event);
+    void updateInfo();
 signals:
     inline void beginLevel();
 
@@ -30,6 +33,8 @@ public slots:
     void RotateTowardsEnemy(int x, int y);
     void start(QString playerName);
     void drawEnemy();
+    void lost();
+    void reset(bool reset);
 };
 
 #endif

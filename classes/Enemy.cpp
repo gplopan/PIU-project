@@ -87,10 +87,10 @@ void Enemy::advance(int phase) {
     {
         case 1:
         case 3:
-            x++;
-            setPos(QPointF(x*70+15,y*70));
-//            if(x*70+15>(x+1)*70)
 
+            setPos(QPointF(x*70,y*70));
+//            if(x*70+15>(x+1)*70)
+            x++;
             break;
         case 6:
             y++;
@@ -105,10 +105,16 @@ void Enemy::advance(int phase) {
             setPos(QPointF(x*70,y*70));
             break;
         case 4:
-            std::cout<<"I WON";
+//            std::cout<<"I WON";
+            won();
         default:
             break;
     }
+
+}
+
+///signal
+void Enemy::won() {
 
 }
 

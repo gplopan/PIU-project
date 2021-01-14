@@ -33,6 +33,7 @@ public:
     void die();
 signals:
     inline void getNextMovement(int *tile, int x, int y);
+    inline void won();
 public slots:
     void advance(int phase) override;
 };

@@ -13,6 +13,9 @@ private:
     string name;   // name of the player
     int score;     // points gathered
     int resources; // amount of gold left
+    int lastSavedScore; //score used for resetting the level
+    int defaultResources; // a default amount of gold - used at resetting a level
+                          // will only change when it's more than the previous value aka when receiving a reward after a level
 public:
     Player();
     Player(string n);
@@ -22,6 +25,8 @@ public:
     void updateResources(int r);
     int getScore();
     void updateScore(int s);
+    void updateSavedScore();
+    void resetPlayer();
 };
 
 

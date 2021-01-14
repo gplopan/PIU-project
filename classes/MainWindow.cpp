@@ -16,6 +16,7 @@ MainWindow::~MainWindow() {
 
 MainWindow::MainWindow()
 {
+    start_game=nullptr;
     gameScene=new QGraphicsScene();
     gameView=new QGraphicsView(gameScene);
 }
@@ -38,18 +39,25 @@ void MainWindow::AddTowerToMap(int x, int y)
         QGraphicsItem *item = new QGraphicsPixmapItem(tower);
         item->setPos(pozX * 70, pozY * 70);
         gameScene->addItem(item);
+        start_game->player->updateResources(towerobj.getCost());
     }
 }
 
-void MainWindow::SetData()
+///used for the preparing the graphic scene and graphic view
+void MainWindow::SetData(int level)
 {
-	gameScene = new QGraphicsScene(0, 0, 1260, 799);
+	gameScene = new QGraphicsScene(0, 0, 1260, 780);
 	gameScene->installEventFilter(this);
-	QPixmap imagename("/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/images/level2.png");
-	gameScene->addPixmap(imagename);
+	string levelname="/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/images/level"+to_string(level)+".png";
+	QPixmap imagename(QString::fromStdString(levelname));
+//    gameScene->setBackgroundBrush(QBrush(imagename));
+    gameScene->addPixmap(imagename);
 
-	gameView->setFixedSize(1260, 799);
 
+	gameView->setFixedSize(1260, 780);
+    gameView->setSceneRect(0, 0, 1260, 780);
+    gameView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    gameView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
 	//create toolbar and toolbutton w/ icon
 	QToolBar* qToolBar = new QToolBar();
@@ -57,24 +65,37 @@ void MainWindow::SetData()
     QIcon icon("/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/images/tower1p1.png");
     qToolButton->setIcon(icon);
     qToolButton->setFixedSize(50,50);
-
-
-    //add button to bar
 	qToolBar->addWidget(qToolButton);
-	//make bar movable - fix for not knowing how to move it
-	qToolBar->setMovable(true);
-	//set the icon size to the size of the button
-	qToolBar->setIconSize(QSize(qToolButton->size().width(), qToolButton->size().height()));
-    qToolBar->setMovable(true);
-//	qToolBar->setFixedSize(1200, 80);
-	QGraphicsProxyWidget* item = gameScene->addWidget(qToolBar);
-	item->setPos(0, 740);
+	qToolBar->setIconSize(QSize(qToolButton->size().width()+10, qToolButton->size().height()));
 
+
+    QToolButton* resetButton = new QToolButton();
+    QIcon icon2("/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/images/reset.png");
+    resetButton->setIcon(icon2);
+    resetButton->setFixedSize(50,50);
+    qToolBar->addWidget(resetButton);
+//    qToolBar->setIconSize(QSize(resetButton->size().width(), resetButton->size().height()));
+
+    QObject::connect(resetButton, SIGNAL(clicked(bool)), this, SLOT(reset(bool)));
+
+
+    QGraphicsProxyWidget* item = gameScene->addWidget(qToolBar);
+	item->setPos(0, 730);
 	item->setZValue(1);
+	item->setFocus();
+
+    //create text for user information
+    string string1="Gold:  " + to_string(start_game->player->getResources())+" Score: " + to_string(start_game->player->getScore());
+    string strin2="Level: "+to_string(start_game->level->getLevelNumber())+"   Wave: "+to_string(start_game->level->getWave());
+    QGraphicsTextItem *playerInfo = gameScene->addText(QString(""));
+
+    playerInfo->setHtml("<div style='background-color:#444745;'>" + QString::fromStdString(string1)+"<br>"+QString::fromStdString(strin2) + "</div>");
+    playerInfo->setFont(QFont("TypeWriter", 17, QFont::Normal));
+    playerInfo->setPos(1010,0);
+    //todo this doesn't change at any point idk how to make it change
+
     gameView->setScene(gameScene);
 	gameView->show();
-
-
 }
 
 /// <summary>
@@ -117,30 +138,31 @@ QString MainWindow::TowerPosition(int tx, int ty, int ex, int ey)
 	if(ty == ey)
 	{
 		if (tx > ex)
-			return "/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/resources/images/tower1p7.png";
+			return "/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/images/tower1p7.png";
 		else
-			return "/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/resources/images/tower1p3.png";
+			return "/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/images/tower1p3.png";
+
 	}
 	else if(tx == ex)
 	{
 		if (ty > ey)
-			return "/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/resources/images/tower1p1.png";
+			return "/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/images/tower1p1.png";
 		else
-			return "/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/resources/images/tower1p5.png";
+			return "/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/images/tower1p5.png";
 	}
 	else if(ty > ey)
 	{
 		if(tx > ex)
-			return "/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/resources/images/tower1p8.png";
+			return "/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/images/tower1p8.png";
 		else
-			return "/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/resources/images/tower1p2.png";
+			return "/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/images/tower1p2.png";
 	}
 	else if(ty < ey)
 	{
 		if(tx < ex)
-			return "/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/resources/images/tower1p4.png";
+			return "/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/images/tower1p4.png";
 		else
-			return "/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/resources/images/tower1p6.png";
+			return "/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/images/tower1p6.png";
 	}
 }
 
@@ -185,7 +207,7 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
 //	return true;
 }
 
-
+///signal
 void MainWindow::beginLevel() {
 
 }
@@ -194,8 +216,11 @@ void MainWindow::beginLevel() {
 ///slot that is connected to the menu. to be used only for that initial call
 void MainWindow::start(QString playerName)
 {
-    start_game=new StartGame(playerName);   //create the start_game class with everything behind it
-    SetData(); //prepare the graphic part of the game
+    if(!start_game)
+        start_game=new StartGame(playerName);   //create the start_game class with everything behind it
+    else
+        start_game->player->resetPlayer();
+    SetData(start_game->level->getLevelNumber()); //prepare the graphic part of the game
 
     QObject::connect(start_game, SIGNAL(emitToAddTower(int, int)), this, SLOT(AddTowerToMap(int, int)));
     QObject::connect(start_game, &StartGame::emitTurnToEnemy, this, &MainWindow::RotateTowardsEnemy);
@@ -205,20 +230,100 @@ void MainWindow::start(QString playerName)
 
     beginLevel(); //signal the start game to start the enemy generation
 
-    QTimer *timer = new QTimer();
+    advanceTimer = new QTimer();
     //at every timeout the advance slot is called -- will generate advance signals towards all qgraphicsitems  in the scene
-    QObject::connect(timer, SIGNAL(timeout()), gameScene, SLOT(advance()));
-    timer->start(2000);
+    QObject::connect(advanceTimer, SIGNAL(timeout()), gameScene, SLOT(advance()));
+    advanceTimer->start(2000);
 
 }
 
+///slot: at every call a new enemy object is created and rendered
 void MainWindow::drawEnemy() {
     auto* enemy=new Enemy();
     enemy->setCoordinates(start_game->level->startX,start_game->level->startY);
 
     enemy->setPos(mapToScene(enemy->getX()*70,enemy->getY()*70-10));
     QObject::connect(enemy, SIGNAL(getNextMovement(int *, int, int)), start_game, SLOT(getTile(int *, int, int)));
+    QObject::connect(enemy, SIGNAL(won()), this, SLOT(lost()));
     gameScene->addItem(enemy); //add an enemy on the map
 }
+
+void MainWindow::lost() {
+    advanceTimer->stop();
+    std::cout<<"lost message"<<std::endl;
+}
+
+void MainWindow::updateInfo() {
+}
+
+void MainWindow::reset(bool reset) {
+    std::cout<<"reset bi"<<std::endl;
+
+    gameView->items().clear();
+    gameScene->clearSelection();
+    advanceTimer->stop();
+    start_game->player->resetPlayer();
+    towers.clear();
+    SetData2(start_game->level->getLevelNumber());
+    beginLevel();
+    advanceTimer->start(2000);
+
+}
+
+void MainWindow::SetData2(int level) {
+//    gameScene = new QGraphicsScene(0, 0, 1260, 780);
+//    gameScene->installEventFilter(this);
+    string levelname="/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/images/level"+to_string(level)+".png";
+    QPixmap imagename(QString::fromStdString(levelname));
+//    gameScene->setBackgroundBrush(QBrush(imagename));
+    gameScene->addPixmap(imagename);
+
+//
+//    gameView->setFixedSize(1260, 780);
+//    gameView->setSceneRect(0, 0, 1260, 780);
+//    gameView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+//    gameView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+    //create toolbar and toolbutton w/ icon
+    QToolBar* qToolBar = new QToolBar();
+    QToolButton* qToolButton = new QToolButton();
+    QIcon icon("/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/images/tower1p1.png");
+    qToolButton->setIcon(icon);
+    qToolButton->setFixedSize(50,50);
+    qToolBar->addWidget(qToolButton);
+    qToolBar->setIconSize(QSize(qToolButton->size().width()+10, qToolButton->size().height()));
+
+
+    QToolButton* resetButton = new QToolButton();
+    QIcon icon2("/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/images/reset.png");
+    resetButton->setIcon(icon2);
+    resetButton->setFixedSize(50,50);
+    qToolBar->addWidget(resetButton);
+//    qToolBar->setIconSize(QSize(resetButton->size().width(), resetButton->size().height()));
+
+    QObject::connect(resetButton, SIGNAL(clicked(bool)), this, SLOT(reset(bool)));
+
+
+    QGraphicsProxyWidget* item = gameScene->addWidget(qToolBar);
+    item->setPos(0, 730);
+    item->setZValue(1);
+    item->setFocus();
+
+    //create text for user information
+    string string1="Gold:  " + to_string(start_game->player->getResources())+" Score: " + to_string(start_game->player->getScore());
+    string strin2="Level: "+to_string(start_game->level->getLevelNumber())+"   Wave: "+to_string(start_game->level->getWave());
+    QGraphicsTextItem *playerInfo = gameScene->addText(QString(""));
+
+    playerInfo->setHtml("<div style='background-color:#444745;'>" + QString::fromStdString(string1)+"<br>"+QString::fromStdString(strin2) + "</div>");
+    playerInfo->setFont(QFont("TypeWriter", 17, QFont::Normal));
+    playerInfo->setPos(1010,0);
+    //todo this doesn't change at any point idk how to make it change
+
+//    gameView->setScene(gameScene);
+//    gameView->show();
+}
+
+
+
 
 

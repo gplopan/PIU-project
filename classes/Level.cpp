@@ -94,3 +94,8 @@ void Level::nextWave() {
         finishedLevel();
 }
 
+///return the number of the level
+int Level::getLevelNumber() {
+    return level;
+}
+
