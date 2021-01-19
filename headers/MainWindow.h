@@ -19,6 +19,7 @@ public:
     QVector<Tower> towers;
     QString TowerPosition(int tx, int ty, int ex, int ey);
     bool eventFilter(QObject* watched, QEvent* event);
+    void DoAnimation(int towerX, int towerY, int enemyX, int enemyY);
 	
 public slots:
     void AddTowerToMap(int x, int y);

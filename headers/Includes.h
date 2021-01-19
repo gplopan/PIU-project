@@ -10,6 +10,7 @@
 #include <QDebug>
 #include <QGraphicsProxyWidget>
 #include <QWidget>
+#include <QPropertyAnimation>
 #include <fstream>
 #include <qgraphicsitemanimation.h>
 #include <qgraphicsitem.h>

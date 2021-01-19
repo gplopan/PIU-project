@@ -37,7 +37,7 @@ Level::Level() {
     for (int i = 0;i < nWaves;i++)
         waves[i] = (i + 1) * level + 1;
     finished = false;
-    this->board.setBoard(1);
+    this->board.setBoard(2);
    
 }
 

@@ -78,25 +78,31 @@ void MainWindow::SetData()
 void MainWindow::RotateTowardsEnemy(int x, int y)
 {
 	int range = 2;
+	QList<QGraphicsItem*> listitems = gameScene->items(Qt::DescendingOrder);
+	qDebug() << "iteme = " << listitems.count();
 	for(int rangeX=-70;rangeX<=70;rangeX+=70)
 		for(int rangeY=-70;rangeY<=70;rangeY+=70)
 		{
 			for(int i=0; i<towers.count();i++)
 			{
+				//qDebug() << "sunt la " << x + rangeX << "="<<(x+rangeX)/70 << " si " << y + rangeY <<"="<<(y+rangeY)/70<< " si tower x si y = " << towers[i].getX() <<" , " << towers[i].getY();
 				if(towers[i].getX() == (x+rangeX)/70 && towers[i].getY() == (y+rangeY)/70)
 				{
 					qDebug() << "schimbam turn dupa click";
-					gameScene->removeItem(gameScene->itemAt(QPointF(x+rangeX, y+rangeY), QTransform()));
+					QGraphicsItem* itemat = gameScene->itemAt(QPointF(x + rangeX, y + rangeY), QTransform());
+					if(itemat != nullptr)
+						gameScene->removeItem(itemat);
 					
-					int locX = x / 70;
-					int locY = y / 70;
-					QString filename = TowerPosition(towers[i].getX(), towers[i].getY(), locX, locY);
+					QString filename = TowerPosition(towers[i].getX(), towers[i].getY(), x / 70, y / 70);
 					QPixmap newTower(filename);
 					QGraphicsItem* item = new QGraphicsPixmapItem(newTower);
+					
 					item->setPos(towers[i].getX() * 70, towers[i].getY() * 70);
 					gameScene->addItem(item);
-					towers.remove(i);
-					towers.append(Tower((x+rangeX)/70, (y+rangeY)/70));
+					towers.remove(i);	
+					towers.insert(i, Tower((x + rangeX) / 70, (y + rangeY) / 70));
+
+					DoAnimation(0, 0, 0, 0);
 				}
 			}
 		}
@@ -179,10 +185,13 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
 	}
 	return QGraphicsView::eventFilter(watched, event);
 }
-/*
-void QGraphicsScene::mousePressEvent(QGraphicsSceneMouseEvent* event)
-{
 
-	
-	}
-}*/
+void MainWindow::DoAnimation(int towerX, int towerY, int enemyX, int enemyY)
+{
+	QPropertyAnimation* animation = new QPropertyAnimation(this->gameScene, "bulletz");
+	animation->setDuration(10000);
+	animation->setStartValue(QRect(0, 0, 100, 30));
+	animation->setEndValue(QRect(250, 250, 100, 30));
+
+	animation->start();
+}

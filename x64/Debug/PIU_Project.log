@@ -2,5 +2,5 @@
 C:\Users\Ionut\Desktop\FACULTATE\FACULTATE\Anul4\Sem1\PIU\PIU_Git\PIU-project\headers\MainWindow.h(8,27): warning C4584: 'MainWindow': base-class 'QObject' is already a base-class of 'QGraphicsView'
 C:\Qt1\5.15.1\msvc2019_64\include\QtCore\qcoreevent.h(347): message : see declaration of 'QObject'
 C:\Qt1\5.15.1\msvc2019_64\include\QtWidgets\qgraphicsview.h(59): message : see declaration of 'QGraphicsView'
-C:\Users\Ionut\Desktop\FACULTATE\FACULTATE\Anul4\Sem1\PIU\PIU_Git\PIU-project\classes\MainWindow.cpp(139): warning C4715: 'MainWindow::TowerPosition': not all control paths return a value
+C:\Users\Ionut\Desktop\FACULTATE\FACULTATE\Anul4\Sem1\PIU\PIU_Git\PIU-project\classes\MainWindow.cpp(145): warning C4715: 'MainWindow::TowerPosition': not all control paths return a value
   PIU_Project.vcxproj -> C:\Users\Ionut\Desktop\FACULTATE\FACULTATE\Anul4\Sem1\PIU\PIU_Git\PIU-project\x64\Debug\PIU_Project.exe
