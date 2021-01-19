@@ -7,7 +7,8 @@
 
 Menu::Menu() {
     menuWindow = new QWidget; //menu window with the start button and the player name
-    menuWindow->setFixedSize(200, 100);
+    menuWindow->setFixedSize(300, 100);
+    menuWindow->setWindowTitle("TOWER DEFENSE");
     nameEdit = new QLineEdit("Player");
     nameEdit->setAlignment(Qt::AlignLeft);
     nameEdit->setMaxLength(20);

@@ -17,7 +17,8 @@ StartGame::StartGame(QString qString) {
         player = new Player();
     else
         player = new Player(qString.toStdString());
-    level = new Level(2,3,3);
+    level = new Level();
+//    level = new Level(3,3,3);
     generateTimer = new QTimer();
     QObject::connect(generateTimer,SIGNAL(timeout()),this,SLOT(generateWave()));
     counter=0;

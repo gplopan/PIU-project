@@ -17,8 +17,9 @@ public:
     QGraphicsScene* gameScene;
     StartGame * start_game;
     QVector<Tower> towers;
-    QVector<Enemy> enemies;
+    QVector<Enemy*> enemies;
     QTimer *advanceTimer;
+    QGraphicsTextItem *playerInfo;
 
     explicit MainWindow();
     ~MainWindow();
