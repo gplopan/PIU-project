@@ -82,6 +82,7 @@ void MainWindow::SetData(int level)
 //    qToolBar->setIconSize(QSize(resetButton->size().width(), resetButton->size().height()));
 
     QObject::connect(resetButton, SIGNAL(clicked(bool)), this, SLOT(reset(bool)));
+    QObject::connect(qToolButton, SIGNAL(clicked(bool)), this, SLOT(nextLevel(bool)));
 
 
     QGraphicsProxyWidget* item = gameScene->addWidget(qToolBar);
@@ -229,11 +230,7 @@ void MainWindow::start(QString playerName)
 
     QObject::connect(start_game, SIGNAL(emitToAddTower(int, int)), this, SLOT(AddTowerToMap(int, int)));
     QObject::connect(start_game, &StartGame::emitTurnToEnemy, this, &MainWindow::RotateTowardsEnemy);
-
-   // QObject::connect(this, SIGNAL(beginLevel()), start_game, SLOT(generateWave()));
     QObject::connect(start_game, SIGNAL(drawEnemyInScene()), this, SLOT(drawEnemy()));
-
-//    beginLevel(); //signal the start game to start the enemy generation
 
     start_game->generateTimer->start(1500); //start the timer that generates the enemies
 
@@ -263,10 +260,9 @@ void MainWindow::lost() {
     start_game->generateTimer->stop();
     std::cout<<"lost message"<<std::endl;
 
-    QWidget *  lossWindow = new QWidget; //menu window with the start button and the player name
+    QWidget *  lossWindow = new QWidget; //mnew window for the loss message and option buttons
     lossWindow->setFixedSize(200, 100);
     QString string="YOU LOST\nTry again, "+QString::fromStdString(start_game->player->getName())+"?";
-//    QString string="\tYOU LOST\n  Try again, Player?";
     auto* label=new QLabel(string);
     auto* button1=new QPushButton("REPLAY");
     auto* button2=new QPushButton("QUIT");
@@ -310,4 +306,22 @@ void MainWindow::reset(bool reset) {
     start_game->generateTimer->start(1500);
 
     start_game->generateWave();
+
+}
+
+void MainWindow::nextLevel(bool ss) {
+    int level=start_game->level->getLevelNumber();
+    start_game->player->updateSavedScore();
+    if(level+1>4)
+    {
+        std:cout<<"wom";
+        start_game->generateTimer->stop();
+        advanceTimer->stop();
+    }
+    else {
+
+        start_game->player->updateResources(-1 * start_game->level->getReward());
+        start_game->level = new Level(level + 1, level + 1, level * 2);
+        reset(true);
+    }
 }

@@ -35,6 +35,7 @@ signals:
 public slots:
     void getTile(int * tile,int x, int y);
     void generateWave();
+    void wait();
 };
 
 

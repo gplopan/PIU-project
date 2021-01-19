@@ -38,6 +38,7 @@ public slots:
     void drawEnemy();
     void lost();
     void reset(bool reset);
+    void nextLevel(bool ss=true);
 };
 
 #endif

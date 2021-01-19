@@ -27,7 +27,7 @@ int Player::getResources() {
 void Player::updateResources(int r) {
     resources-=r;
     if(r<0)
-        defaultResources=resources;
+        defaultResources+=resources;
 }
 
 
@@ -52,10 +52,13 @@ Player::Player() {
 
 }
 
+///saves the current score in case of a reset
 void Player::updateSavedScore() {
     lastSavedScore=score;
 }
 
+
+///resets to the last saved values
 void Player::resetPlayer() {
     score=lastSavedScore;
     resources=defaultResources;

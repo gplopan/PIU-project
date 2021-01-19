@@ -14,7 +14,7 @@ Q_OBJECT
 private:
     int level; //number of level
     int nWaves; //number of enemy waves. same as level??
-    int *waves; // enemies left per wave. len(waves)=nWaves
+    int *waves; // enemies per wave. len(waves)=nWaves
     int reward; // scor and resources after the end of the level
     int currentWave = 0; //current wave in the level
     Board board;
@@ -33,6 +33,7 @@ public:
     void nextWave();
     int getPath(int x, int y);
     void resetLevel(int level);
+    int getReward();
 signals:
     inline void finishedLevel();
 public slots:

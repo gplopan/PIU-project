@@ -18,9 +18,10 @@ StartGame::StartGame(QString qString) {
     else
         player = new Player(qString.toStdString());
     level = new Level();
-//    level = new Level(3,3,3);
+//    level = new Level(4,3,3);
     generateTimer = new QTimer();
     QObject::connect(generateTimer,SIGNAL(timeout()),this,SLOT(generateWave()));
+    QObject::connect(level,SIGNAL(finishedLevel()),this,SLOT(wait()));
     counter=0;
 }
 
@@ -73,6 +74,13 @@ void StartGame::reset(int level) {
     counter=0;
     player->resetPlayer();
     this->level->resetLevel(level);
+}
+
+///prepares the game for the next action. wait for the player to lose or win the level
+void StartGame::wait() {
+    generateTimer->stop();
+    counter=0;
+
 }
 
 

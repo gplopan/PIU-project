@@ -100,3 +100,7 @@ void Level::resetLevel(int level) {
     board.setBoard(level);
 }
 
+int Level::getReward() {
+    return reward;
+}
+
