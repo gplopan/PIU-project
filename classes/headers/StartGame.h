@@ -14,14 +14,17 @@
 
 class StartGame : public QObject {
 Q_OBJECT
+private:
+    int counter;
 public:
     Player *player;
     Level *level;
+    QTimer * generateTimer;
     StartGame();
 	StartGame(QString qString);
 	int GetAction(int x, int y);
 	~StartGame();
-	void impulse();
+	void reset(int level);
 
 signals:
 	inline void emitToAddTower(int x, int y);

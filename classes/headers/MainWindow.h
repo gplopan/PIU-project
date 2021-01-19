@@ -8,6 +8,7 @@
 #include <QGraphicsObject>
 #include "Tower.h"
 #include "StartGame.h"
+#include "Enemy.h"
 
 class MainWindow : public QGraphicsView{
 Q_OBJECT
@@ -16,6 +17,7 @@ public:
     QGraphicsScene* gameScene;
     StartGame * start_game;
     QVector<Tower> towers;
+    QVector<Enemy> enemies;
     QTimer *advanceTimer;
 
     explicit MainWindow();

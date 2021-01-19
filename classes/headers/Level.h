@@ -32,10 +32,10 @@ public:
     int getLevelNumber();
     void nextWave();
     int getPath(int x, int y);
+    void resetLevel(int level);
 signals:
     inline void finishedLevel();
 public slots:
-    void reset();
 
 };
 

@@ -15,6 +15,8 @@ Q_OBJECT
 private:
     int health;
     int speed;
+    int posx, posy;
+    int sprintCount;
     //bool alive=true;
     int x,y;
     std::string sprintName;

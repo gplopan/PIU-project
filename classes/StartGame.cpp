@@ -17,12 +17,16 @@ StartGame::StartGame(QString qString) {
         player = new Player();
     else
         player = new Player(qString.toStdString());
-    level = new Level();
+    level = new Level(2,3,3);
+    generateTimer = new QTimer();
+    QObject::connect(generateTimer,SIGNAL(timeout()),this,SLOT(generateWave()));
+    counter=0;
 }
 
 StartGame::~StartGame() {
     delete player;
     delete level;
+    delete generateTimer;
 }
 
 void StartGame::emitToAddTower(int x, int y) {}
@@ -38,13 +42,23 @@ int StartGame::GetAction(int x, int y) {
 ///signal that tells the mainwindow to draw an enemy object
 //todo figure how the timer works. should code be before the start or in a separate function?
 void StartGame::generateWave() {
-    QTimer *timer = new QTimer();
-    timer->start(1500);
-//    for (int i = 0; i < level->getNextEnemies(level->getWave()); i++) {
-//        timer->callOnTimeout(this->drawEnemyInScene());
-//    }
-    drawEnemyInScene();
-    //for more than 1 wave? call on nextwave somehow
+    generateTimer->setInterval(2500);
+    int enemy_nr_per_wave=level->getNextEnemies(level->getWave());
+    if(enemy_nr_per_wave!=0)
+    {
+        if(counter<enemy_nr_per_wave)
+        {
+            counter++;
+            drawEnemyInScene();
+        }
+        else
+        {
+            level->nextWave();
+            counter=0;
+            generateTimer->setInterval(7000);
+        }
+    }
+
 }
 
 
@@ -54,11 +68,12 @@ void StartGame::getTile(int * tile,int x, int y) {
     *tile=level->getPath(y,x);
 }
 
-void StartGame::impulse() {
-    for (int i = 0; i < level->getNextEnemies(level->getWave()); i++) {
-        drawEnemyInScene();
-    }
+void StartGame::reset(int level) {
+    counter=0;
+    player->resetPlayer();
+    this->level->resetLevel(level);
 }
+
 
 
 

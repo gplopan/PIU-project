@@ -55,7 +55,6 @@ void Board::setBoard(int mapLevel)
 void Board::getStartPoint(int *x, int *y) {
     for(int a=0;a<18;a++)
         for(int b=0;b<11;b++) {
-
             if (board[b][a] == 3) {
                 *x = a;
                 *y = b;

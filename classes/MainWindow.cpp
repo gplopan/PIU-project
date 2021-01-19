@@ -11,6 +11,7 @@
 
 
 MainWindow::~MainWindow() {
+    towers.clear();
     delete gameScene;
 }
 
@@ -93,7 +94,7 @@ void MainWindow::SetData(int level)
     playerInfo->setFont(QFont("TypeWriter", 17, QFont::Normal));
     playerInfo->setPos(1010,0);
     //todo this doesn't change at any point idk how to make it change
-
+    playerInfo->setZValue(2);
     gameView->setScene(gameScene);
 	gameView->show();
 }
@@ -203,8 +204,6 @@ bool MainWindow::eventFilter(QObject* watched, QEvent* event)
 
 	}
 	return QGraphicsView::eventFilter(watched, event);
-//	return gameView(watched, event);
-//	return true;
 }
 
 ///signal
@@ -214,6 +213,7 @@ void MainWindow::beginLevel() {
 
 
 ///slot that is connected to the menu. to be used only for that initial call
+///creates connection between signals and slots
 void MainWindow::start(QString playerName)
 {
     if(!start_game)
@@ -225,15 +225,17 @@ void MainWindow::start(QString playerName)
     QObject::connect(start_game, SIGNAL(emitToAddTower(int, int)), this, SLOT(AddTowerToMap(int, int)));
     QObject::connect(start_game, &StartGame::emitTurnToEnemy, this, &MainWindow::RotateTowardsEnemy);
 
-    QObject::connect(this, SIGNAL(beginLevel()), start_game, SLOT(generateWave()));
+   // QObject::connect(this, SIGNAL(beginLevel()), start_game, SLOT(generateWave()));
     QObject::connect(start_game, SIGNAL(drawEnemyInScene()), this, SLOT(drawEnemy()));
 
-    beginLevel(); //signal the start game to start the enemy generation
+//    beginLevel(); //signal the start game to start the enemy generation
+
+    start_game->generateTimer->start(1500); //start the timer that generates the enemies
 
     advanceTimer = new QTimer();
     //at every timeout the advance slot is called -- will generate advance signals towards all qgraphicsitems  in the scene
     QObject::connect(advanceTimer, SIGNAL(timeout()), gameScene, SLOT(advance()));
-    advanceTimer->start(2000);
+    advanceTimer->start(500);
 
 }
 
@@ -243,8 +245,11 @@ void MainWindow::drawEnemy() {
     enemy->setCoordinates(start_game->level->startX,start_game->level->startY);
 
     enemy->setPos(mapToScene(enemy->getX()*70,enemy->getY()*70-10));
+//    enemies.push_back(*enemy);
+//    enemies.append(*enemy);
     QObject::connect(enemy, SIGNAL(getNextMovement(int *, int, int)), start_game, SLOT(getTile(int *, int, int)));
     QObject::connect(enemy, SIGNAL(won()), this, SLOT(lost()));
+
     gameScene->addItem(enemy); //add an enemy on the map
 }
 
@@ -258,31 +263,33 @@ void MainWindow::updateInfo() {
 
 void MainWindow::reset(bool reset) {
     std::cout<<"reset bi"<<std::endl;
+    start_game->generateTimer->stop();
+    advanceTimer->stop();
 
+    start_game->reset(start_game->level->getLevelNumber());
     gameView->items().clear();
     gameScene->clearSelection();
-    advanceTimer->stop();
-    start_game->player->resetPlayer();
-    towers.clear();
-    SetData2(start_game->level->getLevelNumber());
-    beginLevel();
-    advanceTimer->start(2000);
 
+    towers.clear();
+//    enemies.clear();
+    SetData(start_game->level->getLevelNumber());
+
+//    beginLevel();
+    QObject::connect(advanceTimer, SIGNAL(timeout()), gameScene, SLOT(advance()));
+    advanceTimer->start(500);
+    start_game->generateTimer->start(1500);
+
+    start_game->generateWave();
 }
 
+
+///unnecesary?
+/*
 void MainWindow::SetData2(int level) {
-//    gameScene = new QGraphicsScene(0, 0, 1260, 780);
-//    gameScene->installEventFilter(this);
     string levelname="/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/images/level"+to_string(level)+".png";
     QPixmap imagename(QString::fromStdString(levelname));
-//    gameScene->setBackgroundBrush(QBrush(imagename));
     gameScene->addPixmap(imagename);
-
-//
-//    gameView->setFixedSize(1260, 780);
-//    gameView->setSceneRect(0, 0, 1260, 780);
-//    gameView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-//    gameView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+//gameScene->setBackgroundBrush(imagename);
 
     //create toolbar and toolbutton w/ icon
     QToolBar* qToolBar = new QToolBar();
@@ -299,7 +306,6 @@ void MainWindow::SetData2(int level) {
     resetButton->setIcon(icon2);
     resetButton->setFixedSize(50,50);
     qToolBar->addWidget(resetButton);
-//    qToolBar->setIconSize(QSize(resetButton->size().width(), resetButton->size().height()));
 
     QObject::connect(resetButton, SIGNAL(clicked(bool)), this, SLOT(reset(bool)));
 
@@ -318,12 +324,6 @@ void MainWindow::SetData2(int level) {
     playerInfo->setFont(QFont("TypeWriter", 17, QFont::Normal));
     playerInfo->setPos(1010,0);
     //todo this doesn't change at any point idk how to make it change
-
-//    gameView->setScene(gameScene);
-//    gameView->show();
 }
 
-
-
-
-
+*/

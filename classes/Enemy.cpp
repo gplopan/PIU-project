@@ -10,8 +10,9 @@ Enemy::Enemy(int h, int s, std::string sprite) {
     this->speed=s;
     sprintName=sprite;
     std::string path="/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/images/";
-    QPixmap pix(QString::fromStdString(path.append(sprintName)));
+    QPixmap pix(QString::fromStdString(path.append(sprintName).append("_p_0.png")));
     this->setPixmap(pix.scaled(70, 70, Qt::KeepAspectRatio));
+    sprintCount=0;
 }
 
 ///level 1 -> general type of enemy
@@ -19,8 +20,10 @@ Enemy::Enemy(int h, int s, std::string sprite) {
 Enemy::Enemy() {
     health=2;
     speed=1;
-    QPixmap pix("/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/images/enemy.png");
+    sprintName="enemy_1";
+    QPixmap pix("/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/images/enemy_1_p_0.png");
     this->setPixmap(pix.scaled(70, 70, Qt::KeepAspectRatio));
+    sprintCount=0;
 }
 
 ///lower the health of the enemy
@@ -80,29 +83,56 @@ void Enemy::getNextMovement(int *tile, int x, int y) {
 
 ///slot override - called by the graphicscene at every timeout by the signal advance()
 void Enemy::advance(int phase) {
+
     int currentTile=0;
     getNextMovement(&currentTile, x, y);
-//    std::cout<<currentTile;
     switch(currentTile)
     {
-        case 1:
         case 3:
-
-            setPos(QPointF(x*70,y*70));
-//            if(x*70+15>(x+1)*70)
+            posx=70*x;
+            posy=70*y;
+            setPos(QPointF(posx+70,posy));
             x++;
             break;
+        case 1:
+//            setPos(QPointF(x*70,y*70));
+            posx+=15;
+            setPos(QPointF(posx,posy));
+            if(posx>=(x+1)*70) {
+                x++;
+                posx=x*70;
+            }
+
+            break;
         case 6:
-            y++;
-            setPos(QPointF(x*70,y*70-20));
+//            y++;
+//            setPos(QPointF(x*70,y*70-20));
+            posy+=20;
+            setPos(QPointF(posx,posy));
+            if(posy>=(y+1)*70) {
+                y++;
+                posy=y*70;
+            }
             break;
         case 7:
-            y--;
-            setPos(QPointF(x*70,y*70+20));
+//            y--;
+//            setPos(QPointF(x*70,y*70+20));
+            posy-=15;
+            setPos(QPointF(posx,posy));
+            if(posy<=(y-1)*70) {
+                y--;
+                posy=y*70;
+            }
             break;
         case 8:
-            x--;
-            setPos(QPointF(x*70,y*70));
+//            x--;
+//            setPos(QPointF(x*70,y*70));
+            posx-=15;
+            setPos(QPointF(posx,posy));
+            if(posx<=(x-1)*70) {
+                x--;
+                posx=x*70;
+            }
             break;
         case 4:
 //            std::cout<<"I WON";
@@ -110,6 +140,11 @@ void Enemy::advance(int phase) {
         default:
             break;
     }
+    sprintCount=(sprintCount+1)%7;
+    std::string path="/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/images/";
+    path.append(sprintName+"_p_"+std::to_string(sprintCount)+".png");
+    QPixmap pix(QString::fromStdString(path));
+    setPixmap(pix.scaled(70, 70, Qt::KeepAspectRatio));
 
 }
 
