@@ -36,8 +36,11 @@ void MainWindow::AddTowerToMap(int x, int y)
 	//calculam pozitia sa punem turnul fix pe tile
 	int pozX = x / 70;
 	int pozY = y / 70;
+	for(int i=0;i<squares.count();i++)
+	    gameScene->removeItem(squares[i]);
+    squares.clear();
 	Tower towerobj(pozX,pozY);
-    if(start_game->player->getResources()-towerobj.getCost()>=0) {
+    if(start_game->player->getResources()-towerobj.getCost()>=0 && place) {
         towers.append(Tower(pozX, pozY));
         QPixmap tower("/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/images/tower1p4.png");
         QGraphicsItem *item = new QGraphicsPixmapItem(tower);
@@ -45,6 +48,7 @@ void MainWindow::AddTowerToMap(int x, int y)
         gameScene->addItem(item);
         start_game->player->updateResources(towerobj.getCost());
         updateInfo();
+        place=false;
     }
 }
 
@@ -82,7 +86,8 @@ void MainWindow::SetData(int level)
 //    qToolBar->setIconSize(QSize(resetButton->size().width(), resetButton->size().height()));
 
     QObject::connect(resetButton, SIGNAL(clicked(bool)), this, SLOT(reset(bool)));
-    QObject::connect(qToolButton, SIGNAL(clicked(bool)), this, SLOT(nextLevel(bool)));
+//    QObject::connect(qToolButton, SIGNAL(clicked(bool)), this, SLOT(nextLevel(bool)));
+    QObject::connect(qToolButton, SIGNAL(pressed()), this, SLOT(validate()));
 
 
     QGraphicsProxyWidget* item = gameScene->addWidget(qToolBar);
@@ -268,6 +273,7 @@ void MainWindow::lost() {
     auto* button2=new QPushButton("QUIT");
     QObject::connect(button2,SIGNAL(clicked(bool)),gameScene,SLOT(deleteLater()));
     QObject::connect(button1,SIGNAL(clicked(bool)),this,SLOT(reset(bool)));
+    QObject::connect(button1,SIGNAL(clicked(bool)),lossWindow,SLOT(setHidden(true)));
     QVBoxLayout *layout = new QVBoxLayout;
     QHBoxLayout *layout2 = new QHBoxLayout;
     layout->addWidget(label);
@@ -314,9 +320,25 @@ void MainWindow::nextLevel(bool ss) {
     start_game->player->updateSavedScore();
     if(level+1>4)
     {
-        std:cout<<"wom";
         start_game->generateTimer->stop();
         advanceTimer->stop();
+        QWidget *  win = new QWidget; //new window for the loss message and option buttons
+        win->setFixedSize(200, 100);
+        QString string="YOU WOM\nTry again, "+QString::fromStdString(start_game->player->getName())+"?";
+        auto* label=new QLabel(string);
+        auto* button1=new QPushButton("REPLAY");
+        auto* button2=new QPushButton("QUIT");
+        QObject::connect(button2,SIGNAL(clicked(bool)),gameScene,SLOT(deleteLater()));
+        QObject::connect(button1,SIGNAL(clicked(bool)),this,SLOT(reset(bool)));
+        QObject::connect(button1,SIGNAL(pressed()),win,SLOT(hide()));
+        QVBoxLayout *layout = new QVBoxLayout;
+        QHBoxLayout *layout2 = new QHBoxLayout;
+        layout->addWidget(label);
+        layout2->addWidget(button1);
+        layout2->addWidget(button2);
+        layout->addLayout(layout2);
+        win->setLayout(layout);
+        win->show();
     }
     else {
 
@@ -324,4 +346,25 @@ void MainWindow::nextLevel(bool ss) {
         start_game->level = new Level(level + 1, level + 1, level * 2);
         reset(true);
     }
+}
+
+
+void MainWindow::validate() {
+    for (int i = 0;i < 11;i++)
+    {
+        for (int j = 0;j < 18;j++)
+        {
+            QGraphicsRectItem * rectItem=gameScene->addRect(j*70,i*70,70,70);
+            rectItem->setZValue(2);
+            int tile=0;
+            start_game->getTile(&tile,j,i);
+            if(tile!=0)
+                rectItem->setBrush(QBrush(Qt::red));
+            else
+                rectItem->setBrush(QBrush(Qt::green));
+            rectItem->setOpacity(0.1);
+            squares.append(rectItem);
+        }
+    }
+    place=true;
 }

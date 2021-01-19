@@ -12,19 +12,22 @@
 
 class MainWindow : public QGraphicsView{
 Q_OBJECT
-public:
-    QGraphicsView* gameView;
-    QGraphicsScene* gameScene;
-    StartGame * start_game;
+private:
+    bool place=false;
+    QVector<QGraphicsRectItem*> squares;
     QVector<Tower> towers;
     QVector<Enemy*> enemies;
     QTimer *advanceTimer;
     QGraphicsTextItem *playerInfo;
+public:
+    QGraphicsView* gameView;
+    QGraphicsScene* gameScene;
+    StartGame * start_game;
+
 
     explicit MainWindow();
     ~MainWindow();
     void SetData(int level);
-    void SetData2(int level);
     QString TowerPosition(int tx, int ty, int ex, int ey);
     bool eventFilter(QObject* watched, QEvent* event);
     void updateInfo();
@@ -39,6 +42,7 @@ public slots:
     void lost();
     void reset(bool reset);
     void nextLevel(bool ss=true);
+    void validate();
 };
 
 #endif
