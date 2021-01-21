@@ -95,9 +95,9 @@
     <ClCompile Include="classes\Board.cpp" />
     <ClCompile Include="classes\Bullet.cpp" />
     <ClCompile Include="classes\Enemy.cpp" />
-    <ClCompile Include="classes\Functions.cpp" />
     <ClCompile Include="classes\Level.cpp" />
     <ClCompile Include="classes\MainWindow.cpp" />
+    <ClCompile Include="classes\Menu.cpp" />
     <ClCompile Include="classes\Player.cpp" />
     <ClCompile Include="classes\StartGame.cpp" />
     <ClCompile Include="classes\Tower.cpp" />
@@ -108,16 +108,17 @@
     <Text Include="todo.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="headers\Board.h" />
     <QtMoc Include="headers\Enemy.h" />
     <QtMoc Include="headers\Bullet.h" />
+    <ClInclude Include="headers\Board.h" />
     <ClInclude Include="headers\Functions.h" />
     <ClInclude Include="headers\Includes.h" />
     <QtMoc Include="headers\Level.h" />
     <QtMoc Include="headers\MainWindow.h" />
+    <QtMoc Include="headers\Menu.h" />
     <ClInclude Include="headers\Player.h" />
     <QtMoc Include="headers\StartGame.h" />
-    <ClInclude Include="headers\Tower.h" />
+    <QtMoc Include="headers\Tower.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

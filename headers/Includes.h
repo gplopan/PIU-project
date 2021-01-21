@@ -10,6 +10,7 @@
 #include <QDebug>
 #include <QGraphicsProxyWidget>
 #include <QWidget>
+#include <QTimer>
 #include <QPropertyAnimation>
 #include <fstream>
 #include <qgraphicsitemanimation.h>
@@ -24,3 +25,4 @@
 #include <QToolBar>
 #include <QToolButton>
 #include <QVector>
+#include <QPointF>

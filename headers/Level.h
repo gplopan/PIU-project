@@ -6,31 +6,38 @@
 #define CLASSES_LEVEL_H
 
 
-#include "./Includes.h"
+#include <QtWidgets/QWidget>
 #include "Board.h"
 
-class Level : QObject{
-    Q_OBJECT
+class Level : public QWidget {
+Q_OBJECT
 private:
     int level; //number of level
     int nWaves; //number of enemy waves. same as level??
-    int* waves; // enemies left per wave. len(waves)=nWaves
+    int *waves; // enemies per wave. len(waves)=nWaves
     int reward; // scor and resources after the end of the level
     int currentWave = 0; //current wave in the level
-    bool finished;
     Board board;
+
 public:
+    int startX, startY; //coordinates for the spawning point
     Level();
     ~Level();
     int GetAction(int x, int y);
     Level(int l, int w, int rew);
     int getWaveNumber();
-    int* getEnemies();
+    int *getEnemies();
     int getWave();
     int getNextEnemies(int w);
+    int getLevelNumber();
+    void nextWave();
+    int getPath(int x, int y);
+    void resetLevel(int level);
+    int getReward();
+signals:
+    inline void finishedLevel();
 public slots:
-    void update();
-    void reset();
+
 };
 
 

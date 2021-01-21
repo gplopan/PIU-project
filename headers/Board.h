@@ -8,12 +8,13 @@
 
 class Board {
 private:
-    int** board;
+    int **board;
 public:
     ~Board();
     Board();
-    int** getBoard();
+    int **getBoard();
     void setBoard(int mapLevel);
+    void getStartPoint(int *x, int *y);
 };
 
 

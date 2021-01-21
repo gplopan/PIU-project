@@ -1,12 +1,15 @@
 //
 // Created by ionut on 24.11.2020.
 //
-#include "../headers/Includes.h";
 #include "../headers/Board.h"
 
 #include <iostream>
+#include <fstream>
+#include <string>
+#include "../headers/Level.h"
 
 using namespace std;
+
 
 Board::Board() {
 	this->board = new int* [11];
@@ -18,7 +21,7 @@ Board::Board() {
 		for (int j = 0;j < 18;j++)
 			board[i][j] = 0;
 	}
-	
+
 }
 
 int** Board::getBoard()
@@ -28,12 +31,13 @@ int** Board::getBoard()
 
 Board::~Board()
 {
-	delete this->board;
+	delete[] board;
 }
 
 
 void Board::setBoard(int mapLevel)
 {
+	//	string filename = "maps/map" + to_string(mapLevel) + ".txt";
 	string filename = "maps/map" + to_string(mapLevel) + ".txt";
 	ifstream infile;
 	infile.open(filename.c_str());
@@ -48,9 +52,20 @@ void Board::setBoard(int mapLevel)
 			}
 		}
 	}
-	
-	
 }
+
+///uses x and y as out variables for the coordinates in the matrix for the spawing point of the enemies
+void Board::getStartPoint(int* x, int* y) {
+	for (int a = 0;a < 18;a++)
+		for (int b = 0;b < 11;b++) {
+			if (board[b][a] == 3) {
+				*x = a;
+				*y = b;
+				break;
+			}
+		}
+}
+
 
 
 
