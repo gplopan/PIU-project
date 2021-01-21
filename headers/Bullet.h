@@ -35,6 +35,7 @@ public:
 signals:
     inline void enemyDamaged(int x, int y);
 	
+	
 public slots:
     void getTargetLocation(int x, int y);
 };

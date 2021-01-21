@@ -81,7 +81,7 @@ void Bullet::advance()
                 enemyDamaged(currentX/70, currentY/70);
                 currentX = -1, currentY = -1;
                 stoppingPoint = 10;
-                
+                setPos(QPointF(-100, -100));
             }
 		}
     	if (enemyX > ex && stoppingPoint!=10)

@@ -76,7 +76,6 @@ void Tower::checkForEnemy(int x, int y)
     }
 }
 
-
 void Tower::sendBulletTarget(int x, int y){
 }
 

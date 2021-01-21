@@ -276,6 +276,7 @@ void MainWindow::drawEnemy() {
     {
         bool connect_enemy_bullet = QObject::connect(towers[i]->bullet, &Bullet::enemyDamaged, enemy, &Enemy::enemyDamaged);
         bool connect_enemy_tower = QObject::connect(enemy, &Enemy::sendLocationToTower, towers[i], &Tower::checkForEnemy);
+        qDebug();
     }
     bool connect_enemy_startgame = QObject::connect(enemy, SIGNAL(getNextMovement(int*, int, int)), start_game, SLOT(getTile(int*, int, int)));
     QObject::connect(enemy, SIGNAL(won()), this, SLOT(lost()));
