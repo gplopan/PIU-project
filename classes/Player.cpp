@@ -7,8 +7,10 @@
 ///constructor. n will be provided through the gui. basic values apply
 Player::Player(string n) {
     name=n;
-    score=0;
+    lastSavedScore=0;
+    score=lastSavedScore;
     resources=10;
+    defaultResources=resources;
 }
 
 ///get name of the player
@@ -23,7 +25,9 @@ int Player::getResources() {
 
 ///add r to the resources
 void Player::updateResources(int r) {
-    resources+=r;
+    resources-=r;
+    if(r<0)
+        defaultResources+=resources;
 }
 
 
@@ -41,8 +45,23 @@ void Player::updateScore(int s) {
 ///generic player 'account'
 Player::Player() {
     name="Player";
-    score=0;
+    lastSavedScore=0;
+    score=lastSavedScore;
     resources=10;
+    defaultResources=resources;
+
+}
+
+///saves the current score in case of a reset
+void Player::updateSavedScore() {
+    lastSavedScore=score;
+}
+
+
+///resets to the last saved values
+void Player::resetPlayer() {
+    score=lastSavedScore;
+    resources=defaultResources;
 }
 
 

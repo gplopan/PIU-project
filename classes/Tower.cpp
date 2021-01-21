@@ -14,15 +14,16 @@ Tower::Tower(int x, int y) {
 }
 
 ///will be replaced with initializing from a file maybe
-Tower::Tower(int p, int rt, int c, int range, string sprite,QWidget * parent) {
+//Tower::Tower(int p, int rt, int c, int range, string sprite,QWidget * parent) {
+Tower::Tower(int p, int rt, int c, int range) {
     power=p;
     reloadTime=rt;
     cost=c;
     this->range=range;
-    spriteName=sprite;
-    std::string path="/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/images/";
-    QPixmap pix(QString::fromStdString(path.append(spriteName)));
-    this->setPixmap(pix.scaled(70, 70, Qt::KeepAspectRatio));
+//    spriteName=sprite;
+//    std::string path="/home/georgiana/Facultate/an_IV/piu/PIU-project/classes/resources/images/";
+//    QPixmap pix(QString::fromStdString(path.append(spriteName)));
+//    this->setPixmap(pix.scaled(70, 70, Qt::KeepAspectRatio));
 }
 
 //todo
@@ -51,3 +52,12 @@ int Tower::getY() {
     return y;
 }
 
+///get the range of the tower
+int Tower::getRange()
+{
+    return range;
+}
+
+int Tower::getCost() {
+    return cost;
+}

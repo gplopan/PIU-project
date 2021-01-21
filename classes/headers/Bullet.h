@@ -18,7 +18,6 @@ private:
 public:
     Bullet();
     Bullet(int d, string sprite, int s);
-    //todo constructor de copiere
     ~Bullet(){};
     int getDamagePower();
     int getSpeed();
