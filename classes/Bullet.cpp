@@ -89,7 +89,7 @@ void Bullet::advance()
             if (enemyY < ey) // sus-dreapta
             {
                 setPos(QPointF(towerX * 70 + bullettime * 10 + 25, towerY * 70 - bullettime * 10 + 25));
-                QPixmap pix("C:/Users/Ionut/Desktop/FACULTATE/FACULTATE/Anul4/Sem1/PIU/PIU_Git/PIU-project/images/Bullet_Cannon2.png");
+                QPixmap pix("images/Bullet_Cannon2.png");
                 currentX = towerX * 70 + bullettime * 10 + 25;
                 currentY = towerY * 70 - bullettime * 10 + 25;
                 this->setPixmap(pix.scaled(20, 30, Qt::KeepAspectRatio));
@@ -97,14 +97,14 @@ void Bullet::advance()
             else if (enemyY == ey) // dreapta
             {
                 setPos(QPointF(towerX * 70 + bullettime * 10 + 45, towerY * 70 + 25));
-                QPixmap pix("C:/Users/Ionut/Desktop/FACULTATE/FACULTATE/Anul4/Sem1/PIU/PIU_Git/PIU-project/images/Bullet_Cannon3.png");
+                QPixmap pix("images/Bullet_Cannon3.png");
                 currentX = towerX * 70 + bullettime * 10 + 45;
                 currentY = towerY * 70+25;
                 this->setPixmap(pix.scaled(20, 30, Qt::KeepAspectRatio));
             }
             else { //jos-dreapta
                 setPos(QPointF(towerX * 70 + bullettime * 10 + 35, towerY * 70 + bullettime * 10 + 35));
-                QPixmap pix("C:/Users/Ionut/Desktop/FACULTATE/FACULTATE/Anul4/Sem1/PIU/PIU_Git/PIU-project/images/Bullet_Cannon4.png");
+                QPixmap pix("images/Bullet_Cannon4.png");
                 currentX = towerX * 70 + bullettime * 10 + 35;
                 currentY = towerY * 70 + bullettime * 10 + 35;
                 this->setPixmap(pix.scaled(20, 30, Qt::KeepAspectRatio));
@@ -115,14 +115,14 @@ void Bullet::advance()
             if (enemyY < ey) //sus
             {
                 setPos(QPointF(towerX * 70 + 25, towerY * 70 - bullettime * 10 + 25));
-                QPixmap pix("C:/Users/Ionut/Desktop/FACULTATE/FACULTATE/Anul4/Sem1/PIU/PIU_Git/PIU-project/images/Bullet_Cannon1.png");
+                QPixmap pix("images/Bullet_Cannon1.png");
                 currentX = towerX * 70 + 25;
                 currentY = towerY * 70 - bullettime * 10 + 25;
                 this->setPixmap(pix.scaled(20, 30, Qt::KeepAspectRatio));
             }
             else if (enemyY > ey) { //jos
                 setPos(QPointF(towerX * 70 + 25, towerY * 70 + bullettime * 10 + 45));
-                QPixmap pix("C:/Users/Ionut/Desktop/FACULTATE/FACULTATE/Anul4/Sem1/PIU/PIU_Git/PIU-project/images/Bullet_Cannon5.png");
+                QPixmap pix("images/Bullet_Cannon5.png");
                 currentX = towerX * 70 + 25;
                 currentY = towerY * 70 + bullettime * 10 + 45;
                 this->setPixmap(pix.scaled(20, 30, Qt::KeepAspectRatio));
@@ -133,7 +133,7 @@ void Bullet::advance()
             if (enemyY < ey) // sus-stanga
             {
                 setPos(QPointF(towerX * 70 - bullettime * 10 + 35, towerY * 70 - bullettime * 10 + 35));
-                QPixmap pix("C:/Users/Ionut/Desktop/FACULTATE/FACULTATE/Anul4/Sem1/PIU/PIU_Git/PIU-project/images/Bullet_Cannon8.png");
+                QPixmap pix("images/Bullet_Cannon8.png");
                 currentX = towerX * 70 - bullettime * 10 + 35;
                 currentY = towerY * 70 - bullettime * 10 + 35;
                 this->setPixmap(pix.scaled(20, 30, Qt::KeepAspectRatio));
@@ -141,14 +141,14 @@ void Bullet::advance()
             else if (enemyY == ey) // stanga
             {
                 setPos(QPointF(towerX * 70 - bullettime * 10 + 25, towerY * 70 + 25));
-                QPixmap pix("C:/Users/Ionut/Desktop/FACULTATE/FACULTATE/Anul4/Sem1/PIU/PIU_Git/PIU-project/images/Bullet_Cannon7.png");
+                QPixmap pix("images/Bullet_Cannon7.png");
                 currentX = towerX * 70 - bullettime * 10 + 25;
                 currentY = towerY * 70 + 25;
                 this->setPixmap(pix.scaled(20, 30, Qt::KeepAspectRatio));
             }
             else {//jos-stanga
                 setPos(QPointF(towerX * 70 - bullettime * 10 + 25, towerY * 70 + bullettime * 10 + 30));
-                QPixmap pix("C:/Users/Ionut/Desktop/FACULTATE/FACULTATE/Anul4/Sem1/PIU/PIU_Git/PIU-project/images/Bullet_Cannon6.png");
+                QPixmap pix("images/Bullet_Cannon6.png");
                 currentX = towerX * 70 - bullettime * 10 + 25;
                 currentY = towerY * 70 + bullettime * 10 + 30;
                 this->setPixmap(pix.scaled(20, 30, Qt::KeepAspectRatio));

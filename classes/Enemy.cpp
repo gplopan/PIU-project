@@ -9,7 +9,7 @@ Enemy::Enemy(int h, int s, std::string sprite) {
     this->health = h;
     this->speed = s;
     sprintName = sprite;
-    std::string path = "C:/Users/Ionut/Desktop/FACULTATE/FACULTATE/Anul4/Sem1/PIU/PIU_Git/PIU-project/images/";
+    std::string path = "images/";
     QPixmap pix(QString::fromStdString(path.append(sprintName).append("_p_0.png")));
     this->setPixmap(pix.scaled(70, 70, Qt::KeepAspectRatio));
     sprintCount = 0;
@@ -21,7 +21,7 @@ Enemy::Enemy() {
     health = 2;
     speed = 1;
     sprintName = "enemy_1";
-    QPixmap pix("C:/Users/Ionut/Desktop/FACULTATE/FACULTATE/Anul4/Sem1/PIU/PIU_Git/PIU-project/images/enemy_1_p_0.png");
+    QPixmap pix("images/enemy_1_p_0.png");
     this->setPixmap(pix.scaled(70, 70, Qt::KeepAspectRatio));
     sprintCount = 0;
 }
@@ -74,7 +74,7 @@ Enemy::Enemy(const QPixmap& pixmap, QGraphicsItem* parent) : QGraphicsPixmapItem
 {
     health = 2;
     speed = 1;
-    sprintName = "C:/Users/Ionut/Desktop/FACULTATE/FACULTATE/Anul4/Sem1/PIU/PIU_Git/PIU-project/images/enemy.png";
+    sprintName = "images/enemy.png";
 }
 
 void Enemy::getNextMovement(int* tile, int x, int y) {
@@ -145,7 +145,7 @@ void Enemy::advance(int phase) {
         break;
     }
     sprintCount = (sprintCount + 1) % 7;
-    std::string path = "C:/Users/Ionut/Desktop/FACULTATE/FACULTATE/Anul4/Sem1/PIU/PIU_Git/PIU-project/images/";
+    std::string path = "images/";
     path.append(sprintName + "_p_" + std::to_string(sprintCount) + ".png");
     QPixmap pix(QString::fromStdString(path));
     setPixmap(pix.scaled(70, 70, Qt::KeepAspectRatio));
